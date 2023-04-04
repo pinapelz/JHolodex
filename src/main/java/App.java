@@ -1,6 +1,6 @@
 import com.pina.Holodex;
 import com.pina.HolodexException;
-import com.pina.LiveStream;
+import com.pina.datatypes.Livestream;
 import com.pina.query.LiveStreamsQueryBuilder;
 
 import java.util.List;
@@ -14,8 +14,8 @@ public class App
             LiveStreamsQueryBuilder query = new LiveStreamsQueryBuilder();
             query.setChannelId("UCBQd84IW8OvM8H5jftHdvmw");
             query.setStatus("live");
-            List<LiveStream> liveStreams = holodex.getLiveStreams(query);
-            for (LiveStream stream : liveStreams) {
+            List<Livestream> livestreams = holodex.getLiveStreams(query);
+            for (Livestream stream : livestreams) {
                 System.out.println(stream.title + " is live with " + stream.live_viewers + " viewers" + stream.id);
             }
         } catch (HolodexException e) {
