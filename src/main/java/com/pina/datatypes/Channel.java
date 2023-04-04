@@ -1,4 +1,4 @@
-package com.pina;
+package com.pina.datatypes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

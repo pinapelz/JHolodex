@@ -1,10 +1,10 @@
-package com.pina;
+package com.pina.datatypes;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LiveStream {
+public class Livestream {
     public String id;
     public String title;
     public String type;
