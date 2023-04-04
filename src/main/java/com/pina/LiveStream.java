@@ -2,15 +2,21 @@ package com.pina;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LiveStream {
     public String id;
     public String title;
-    public String thumbnail;
+    public String type;
+    public String topic;
+    public String published_at;
+    public String available_at;
+    public int duration;
     public String status;
-    public int viewers;
+    public String start_scheduled;
+    public String start_actual;
+    public String thumbnail;
+    public int live_viewers;
     public Channel channel;
 }
 
