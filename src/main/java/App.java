@@ -13,7 +13,7 @@ public class App
     public static void main( String[] args )
     {
         try {
-            Holodex holodex = new Holodex("b33eda39-dfb0-4337-9c8a-49cd8e69f5d5");
+            Holodex holodex = new Holodex("b33eda39-dfb0-4337-9c8a-49cd8e69f5d5"); //API key here is not active
             Channel channel = holodex.getChannel("UC4WvIIAo89_AzGUh1AZ6Dkg");
             System.out.println(channel.name + " is a member of " + channel.org + " and has " + channel.suborg + " as a suborg");
 
