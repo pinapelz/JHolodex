@@ -4,7 +4,7 @@ package com.pina.datatypes;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Livestream {
+public class Video {
     public String id;
     public String title;
     public String type;
