@@ -4,6 +4,7 @@ import com.pina.datatypes.Channel;
 import com.pina.datatypes.Video;
 import com.pina.query.ChannelQueryBuilder;
 import com.pina.query.LiveVideoQueryBuilder;
+import com.pina.query.VideoQueryBuilder;
 
 import java.util.List;
 
@@ -11,35 +12,31 @@ public class App
 {
     public static void main( String[] args )
     {
-        Holodex holodex = new Holodex("b33eda39-dfb0-4337-9c8a-49cd8e69f5d5");
         try {
-            ChannelQueryBuilder query = new ChannelQueryBuilder();
-            query.setOrg("Hololive");
-            List<Channel> channels = holodex.getChannels(query);
-            System.out.println("The Members of Hololive are:");
-            for (Channel channel : channels) {
-                System.out.println(channel.name + " (" + channel.id + ")");
-            }
-            System.out.println("\n");
-            Channel channel = holodex.getChannel("UC1DCedRgGHBdm81E1llLhOQ");
-            System.out.println(channel.name+"'s English name is " + channel.english_name);
-            System.out.println(channel.name+" is a "+channel.type);
+            Holodex holodex = new Holodex("b33eda39-dfb0-4337-9c8a-49cd8e69f5d5");
+            Channel channel = holodex.getChannel("UC4WvIIAo89_AzGUh1AZ6Dkg");
+            System.out.println(channel.name + " is a member of " + channel.org + " and has " + channel.suborg + " as a suborg");
 
-            LiveVideoQueryBuilder liveQuery = new LiveVideoQueryBuilder();
-            liveQuery.setChannelId("UCkngxfPbmGyGl_RIq4FA3MQ");
-            liveQuery.setStatus("upcoming");
-            List<Video> chigusaUpcoming = holodex.getVideos(liveQuery);
-            System.out.println("\n");
-            System.out.println("Chigusa's upcoming streams are:");
-            for (Video video : chigusaUpcoming) {
-                System.out.println(video.title + " (" + video.id + ")");
+            LiveVideoQueryBuilder liveVideoQuery = new LiveVideoQueryBuilder().setStatus("live").setOrg("Hololive");
+            List<Video> currentlyLiveVideos = holodex.getLiveVideos(liveVideoQuery);
+            System.out.println("Currently there are " + currentlyLiveVideos.size() + " livestreams on going in Hololive");
+            for (Video video : currentlyLiveVideos) {
+                System.out.println(video.channel.name + " is currently live with " + video.live_viewers + " views");
             }
 
+            ChannelQueryBuilder channelQuery = new ChannelQueryBuilder();
+            channelQuery.setOrg("Nijisanji");
+            channelQuery.setLimit(75);
+            List<Channel> nijisanjiMembers = holodex.getChannels(channelQuery);
 
+            VideoQueryBuilder vidoeQuery = new VideoQueryBuilder();
+            vidoeQuery.setVideoId("9-O_IWM3184");
+            Video anotherVideo = holodex.getVideo(new VideoQueryBuilder().setVideoId("9-O_IWM3184").setLang("en"));
+            System.out.println(anotherVideo.channel.name + " uploaded a video titled " + anotherVideo.title + " on " + anotherVideo.published_at);
 
-        } catch (HolodexException e) {
-            System.err.println("Failed to get live streams: " + e.getMessage());
         }
-        System.exit(0);
+        catch (HolodexException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.pina.query;
 
+
 public class VideoQueryBuilder {
     private String videoId;
     private String lang;
@@ -9,24 +10,27 @@ public class VideoQueryBuilder {
         return videoId;
     }
 
-    public void setVideoId(String videoId) {
+    public VideoQueryBuilder setVideoId(String videoId) {
         this.videoId = videoId;
+        return this;
     }
 
     public String getLang() {
         return lang;
     }
 
-    public void setLang(String lang) {
+    public VideoQueryBuilder setLang(String lang) {
         this.lang = lang;
+        return this;
     }
 
     public String getC() {
         return c;
     }
 
-    public void setC(String c) {
+    public VideoQueryBuilder setC(String c) {
         this.c = c;
+        return this;
     }
 
 
