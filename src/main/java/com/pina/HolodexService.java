@@ -5,19 +5,20 @@ import java.util.List;
 import com.pina.datatypes.Video;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface HolodexService {
     @GET("/api/v2/live")
-    Call<List<Video>> getLiveStreams(
-            @Query("channel_id") String channel_id,
+    Call<List<Video>> getLiveVideo(
+            @Query("channelID") String channelID,
             @Query("id") String id,
             @Query("include") String include,
             @Query("lang") String lang,
             @Query("limit") Integer limit,
-            @Query("max_upcoming_hours") Integer offset,
-            @Query("mentioned_channel_id") String mentioned_channel_id,
-            @Query("offset") Integer max_upcoming_hours,
+            @Query("maxUpcomingHours") Integer offset,
+            @Query("mentionedChannelID") String mentionedChannelID,
+            @Query("offset") Integer maxUpcomingHours,
             @Query("order") String order,
             @Query("org") String org,
             @Query("paginated") String paginated,
@@ -27,6 +28,63 @@ public interface HolodexService {
             @Query("type") String type
     );
 
+    @GET("/api/v2/videos")
+    Call<List<Video>> getVideos(
+            @Query("channelID") String channelID,
+            @Query("id") String id,
+            @Query("include") String include,
+            @Query("lang") String lang,
+            @Query("limit") Integer limit,
+            @Query("maxUpcomingHours") Integer offset,
+            @Query("mentionedChannelID") String mentionedChannelID,
+            @Query("offset") Integer maxUpcomingHours,
+            @Query("order") String order,
+            @Query("org") String org,
+            @Query("paginated") String paginated,
+            @Query("sort") String sort,
+            @Query("status") String status,
+            @Query("topic") String topic,
+            @Query("type") String type
+    );
+
+    @GET("/api/v2/channels/{channelID}")
+    Call<List<Video>> getChannel(
+            @Path("channelID") String channelID
+    );
+
+    @GET("/api/v2/channels/{channelID}/{type}")
+    Call<List<Video>> getChannelType(
+            @Path("channelID") String channelID,
+            @Path("type") String type,
+            @Query("include") String include,
+            @Query("lang") String lang,
+            @Query("limit") Integer limit,
+            @Query("offset") Integer offset,
+            @Query("paginated") String paginated
+    );
+
+    @GET("/api/v2/channels/users/live")
+    Call<List<Video>> getLiveChannels(
+            @Query("channels") String[] channels
+    );
+
+    @GET("/api/v2/videos/{videoID}")
+    Call<List<Video>> getVideo(
+            @Path("videoID") String videoID,
+            @Query("lang") String lang,
+            @Query("c") String c
+    );
+
+    @GET("/api/v2/channels")
+    Call<List<Video>> getChannels(
+            @Query("limit") Integer limit,
+            @Query("offset") Integer offset,
+            @Query("type") String type,
+            @Query("lang") String lang,
+            @Query("order") String order,
+            @Query("org") String org,
+            @Query("sort") String sort
+    );
 
 }
 

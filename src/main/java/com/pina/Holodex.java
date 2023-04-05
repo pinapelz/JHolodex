@@ -21,7 +21,7 @@ public class Holodex {
         service = retrofit.create(HolodexService.class);
     }
     public List<Video> getLiveStreams(LiveStreamsQueryBuilder queryBuilder) throws HolodexException {
-        Call<List<Video>> call = service.getLiveStreams(queryBuilder.getChannelId(), queryBuilder.getId(),
+        Call<List<Video>> call = service.getLiveVideo(queryBuilder.getChannelId(), queryBuilder.getId(),
                 queryBuilder.getInclude(), queryBuilder.getLang(),
                 queryBuilder.getLimit(), queryBuilder.getMaxUpcomingHours(),
                 queryBuilder.getMentionedChannelId(), queryBuilder.getOffset(),
