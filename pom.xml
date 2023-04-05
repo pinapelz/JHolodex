@@ -2,12 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.pina</groupId>
-  <artifactId>HldexWrapper</artifactId>
+  <groupId>com.pinapelz</groupId>
+  <artifactId>JHolodex</artifactId>
   <version>0.01</version>
   <packaging>jar</packaging>
 
-  <name>HldexWrapper</name>
+  <name>JHolodex</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -40,4 +40,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+
 </project>
