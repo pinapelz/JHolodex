@@ -6,6 +6,8 @@ import com.pina.query.ChannelQueryBuilder;
 import com.pina.query.LiveVideoQueryBuilder;
 import com.pina.query.VideoQueryBuilder;
 import com.pina.query.VideosByChannelIDQuery;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -17,13 +19,24 @@ import java.util.List;
 public class Holodex {
     private final HolodexService service;
 
-    public Holodex() {
+    public Holodex(String apiKey) {
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
+            Request request = original.newBuilder()
+                    .header("X-APIKEY", apiKey)
+                    .method(original.method(), original.body())
+                    .build();
+            return chain.proceed(request);
+        });
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://holodex.net")
                 .addConverterFactory(JacksonConverterFactory.create())
+                .client(httpClient.build())
                 .build();
         service = retrofit.create(HolodexService.class);
     }
+
 
     public List<Video> getLiveVideos(LiveVideoQueryBuilder queryBuilder) throws HolodexException {
         Call<List<Video>> call = service.getLiveVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
