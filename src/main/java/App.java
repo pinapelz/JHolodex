@@ -28,6 +28,7 @@ public class App
             channelQuery.setOrg("Nijisanji");
             channelQuery.setLimit(75);
             List<Channel> nijisanjiMembers = holodex.getChannels(channelQuery);
+            // Gets the first 75 members of Nijisanji
 
             VideoQueryBuilder vidoeQuery = new VideoQueryBuilder();
             vidoeQuery.setVideoId("9-O_IWM3184");

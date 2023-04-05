@@ -1,6 +1,6 @@
 package com.pina.query;
 
-public class VideosByChannelIDQuery {
+public class VideosByChannelIDQueryBuilder {
     private String channelId;
     private String type;
     private String include;
@@ -9,37 +9,37 @@ public class VideosByChannelIDQuery {
     private Integer offset;
     private String paginated;
 
-    public VideosByChannelIDQuery setChannelId(String channelId) {
+    public VideosByChannelIDQueryBuilder setChannelId(String channelId) {
         this.channelId = channelId;
         return this;
     }
 
-    public VideosByChannelIDQuery setType(String type) {
+    public VideosByChannelIDQueryBuilder setType(String type) {
         this.type = type;
         return this;
     }
 
-    public VideosByChannelIDQuery setInclude(String include) {
+    public VideosByChannelIDQueryBuilder setInclude(String include) {
         this.include = include;
         return this;
     }
 
-    public VideosByChannelIDQuery setLang(String lang) {
+    public VideosByChannelIDQueryBuilder setLang(String lang) {
         this.lang = lang;
         return this;
     }
 
-    public VideosByChannelIDQuery setLimit(Integer limit) {
+    public VideosByChannelIDQueryBuilder setLimit(Integer limit) {
         this.limit = limit;
         return this;
     }
 
-    public VideosByChannelIDQuery setOffset(Integer offset) {
+    public VideosByChannelIDQueryBuilder setOffset(Integer offset) {
         this.offset = offset;
         return this;
     }
 
-    public VideosByChannelIDQuery setPaginated(String paginated) {
+    public VideosByChannelIDQueryBuilder setPaginated(String paginated) {
         this.paginated = paginated;
         return this;
     }

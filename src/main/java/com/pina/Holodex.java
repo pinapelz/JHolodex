@@ -5,7 +5,7 @@ import com.pina.datatypes.Video;
 import com.pina.query.ChannelQueryBuilder;
 import com.pina.query.LiveVideoQueryBuilder;
 import com.pina.query.VideoQueryBuilder;
-import com.pina.query.VideosByChannelIDQuery;
+import com.pina.query.VideosByChannelIDQueryBuilder;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Call;
@@ -17,9 +17,18 @@ import java.io.IOException;
 import java.util.List;
 
 public class Holodex {
-    private final HolodexService service;
+    private HolodexService service;
 
     public Holodex(String apiKey) {
+        initializeHolodexService(apiKey, "https://holodex.net");
+    }
+
+    public Holodex(String apiKey, String baseUrl) {
+        // purely for unit testing
+        initializeHolodexService(apiKey, baseUrl);
+    }
+
+    private void initializeHolodexService(String apiKey, String baseUrl){
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(chain -> {
             Request original = chain.request();
@@ -30,12 +39,14 @@ public class Holodex {
             return chain.proceed(request);
         });
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://holodex.net")
+                .baseUrl(baseUrl)
                 .addConverterFactory(JacksonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
         service = retrofit.create(HolodexService.class);
     }
+
+
 
 
     public List<Video> getLiveVideos(LiveVideoQueryBuilder queryBuilder) throws HolodexException {
@@ -67,7 +78,7 @@ public class Holodex {
         return executeCall(call);
     }
 
-    public List<Video> getVideosByChannelId(VideosByChannelIDQuery query) throws HolodexException {
+    public List<Video> getVideosByChannelId(VideosByChannelIDQueryBuilder query) throws HolodexException {
         Call<List<Video>> call = service.getVideosByChannelId(query.getChannelId(), query.getType(), query.getInclude(),
                 query.getLang(), query.getLimit(), query.getOffset(), query.getPaginated());
         return executeCall(call);
