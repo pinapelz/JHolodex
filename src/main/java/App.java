@@ -11,7 +11,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        Holodex holodex = new Holodex("APIKEYHERE");
+        Holodex holodex = new Holodex("b33eda39-dfb0-4337-9c8a-49cd8e69f5d5");
         try {
             ChannelQueryBuilder query = new ChannelQueryBuilder();
             query.setOrg("Hololive");
