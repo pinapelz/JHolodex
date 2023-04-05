@@ -3,6 +3,7 @@ package com.pina;
 import com.pina.datatypes.Channel;
 import com.pina.datatypes.Video;
 import com.pina.query.VideoQueryBuilder;
+import com.pina.query.VideosByChannelIDQuery;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -14,13 +15,14 @@ import java.util.List;
 public class Holodex {
     private final HolodexService service;
 
-    public Holodex(){
+    public Holodex() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://holodex.net")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
         service = retrofit.create(HolodexService.class);
     }
+
     public List<Video> getLiveVideos(VideoQueryBuilder queryBuilder) throws HolodexException {
         Call<List<Video>> call = service.getLiveVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
                 queryBuilder.getInclude(), queryBuilder.getLang(),
@@ -50,7 +52,13 @@ public class Holodex {
         return executeCall(call);
     }
 
+    public List<Video> getVideosByChannelId(VideosByChannelIDQuery query) throws HolodexException {
+        Call<List<Video>> call = service.getVideosByChannelId(query.getChannelId(), query.getType(), query.getInclude(),
+                query.getLang(), query.getLimit(), query.getOffset(), query.getPaginated());
+        return executeCall(call);
 
+
+    }
 
 
     private <T> T executeCall(Call<T> call) throws HolodexException {
