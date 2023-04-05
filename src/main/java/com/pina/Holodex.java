@@ -3,8 +3,8 @@ package com.pina;
 import com.pina.datatypes.Channel;
 import com.pina.datatypes.Video;
 import com.pina.query.ChannelQueryBuilder;
-import com.pina.query.LiveVideoQueryBuilder;
 import com.pina.query.VideoQueryBuilder;
+import com.pina.query.VideoMetadataQueryBuilder;
 import com.pina.query.VideosByChannelIDQueryBuilder;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -46,10 +46,7 @@ public class Holodex {
         service = retrofit.create(HolodexService.class);
     }
 
-
-
-
-    public List<Video> getLiveVideos(LiveVideoQueryBuilder queryBuilder) throws HolodexException {
+    public List<Video> getLiveVideos(VideoQueryBuilder queryBuilder) throws HolodexException {
         Call<List<Video>> call = service.getLiveVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
                 queryBuilder.getInclude(), queryBuilder.getLang(),
                 queryBuilder.getLimit(), queryBuilder.getMaxUpcomingHours(),
@@ -61,7 +58,7 @@ public class Holodex {
         return executeCall(call);
     }
 
-    public List<Video> getVideos(LiveVideoQueryBuilder queryBuilder) throws HolodexException {
+    public List<Video> getVideos(VideoQueryBuilder queryBuilder) throws HolodexException {
         Call<List<Video>> call = service.getVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
                 queryBuilder.getInclude(), queryBuilder.getLang(),
                 queryBuilder.getLimit(), queryBuilder.getMaxUpcomingHours(),
@@ -91,7 +88,7 @@ public class Holodex {
         return executeCall(call);
     }
 
-    public Video getVideo(VideoQueryBuilder query) throws HolodexException {
+    public Video getVideo(VideoMetadataQueryBuilder query) throws HolodexException {
         Call<Video> call = service.getVideo(query.getVideoId(), query.getLang(), query.getC());
         return executeCall(call);
     }

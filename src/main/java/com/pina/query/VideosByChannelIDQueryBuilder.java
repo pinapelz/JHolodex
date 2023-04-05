@@ -1,6 +1,9 @@
 package com.pina.query;
 
 public class VideosByChannelIDQueryBuilder {
+    /***
+     * Used to get the videos of a single channel when given the channel ID
+     */
     private String channelId;
     private String type;
     private String include;

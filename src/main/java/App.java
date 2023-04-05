@@ -3,8 +3,8 @@ import com.pina.HolodexException;
 import com.pina.datatypes.Channel;
 import com.pina.datatypes.Video;
 import com.pina.query.ChannelQueryBuilder;
-import com.pina.query.LiveVideoQueryBuilder;
 import com.pina.query.VideoQueryBuilder;
+import com.pina.query.VideoMetadataQueryBuilder;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class App
             Channel channel = holodex.getChannel("UC4WvIIAo89_AzGUh1AZ6Dkg");
             System.out.println(channel.name + " is a member of " + channel.org + " and has " + channel.suborg + " as a suborg");
 
-            LiveVideoQueryBuilder liveVideoQuery = new LiveVideoQueryBuilder().setStatus("live").setOrg("Hololive");
+            VideoQueryBuilder liveVideoQuery = new VideoQueryBuilder().setStatus("live").setOrg("Hololive");
             List<Video> currentlyLiveVideos = holodex.getLiveVideos(liveVideoQuery);
             System.out.println("Currently there are " + currentlyLiveVideos.size() + " livestreams on going in Hololive");
             for (Video video : currentlyLiveVideos) {
@@ -30,9 +30,9 @@ public class App
             List<Channel> nijisanjiMembers = holodex.getChannels(channelQuery);
             // Gets the first 75 members of Nijisanji
 
-            VideoQueryBuilder vidoeQuery = new VideoQueryBuilder();
+            VideoMetadataQueryBuilder vidoeQuery = new VideoMetadataQueryBuilder();
             vidoeQuery.setVideoId("9-O_IWM3184");
-            Video anotherVideo = holodex.getVideo(new VideoQueryBuilder().setVideoId("9-O_IWM3184").setLang("en"));
+            Video anotherVideo = holodex.getVideo(new VideoMetadataQueryBuilder().setVideoId("9-O_IWM3184").setLang("en"));
             System.out.println(anotherVideo.channel.name + " uploaded a video titled " + anotherVideo.title + " on " + anotherVideo.published_at);
 
         }

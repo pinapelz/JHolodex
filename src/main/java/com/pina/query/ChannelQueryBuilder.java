@@ -1,6 +1,9 @@
 package com.pina.query;
 
 public class ChannelQueryBuilder {
+    /***
+     * Used to get a set of channels matching the given parameters
+     */
     private Integer limit;
     private Integer offset;
     private String type;
