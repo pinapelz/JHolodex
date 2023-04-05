@@ -12,14 +12,14 @@ import retrofit2.http.Query;
 public interface HolodexService {
     @GET("/api/v2/live")
     Call<List<Video>> getLiveVideos(
-            @Query("channelID") String channelID,
+            @Query("channel_id") String channel_id,
             @Query("id") String id,
             @Query("include") String include,
             @Query("lang") String lang,
             @Query("limit") Integer limit,
-            @Query("maxUpcomingHours") Integer offset,
-            @Query("mentionedChannelID") String mentionedChannelID,
-            @Query("offset") Integer maxUpcomingHours,
+            @Query("maxUpcomingHours") Integer maxUpcomingHours,
+            @Query("mentioned_channel_id") String mentioned_channel_id,
+            @Query("offset") Integer offset,
             @Query("order") String order,
             @Query("org") String org,
             @Query("paginated") String paginated,
@@ -31,14 +31,14 @@ public interface HolodexService {
 
     @GET("/api/v2/videos")
     Call<List<Video>> getVideos(
-            @Query("channelID") String channelID,
+            @Query("channel_id") String channel_id,
             @Query("id") String id,
             @Query("include") String include,
             @Query("lang") String lang,
             @Query("limit") Integer limit,
-            @Query("maxUpcomingHours") Integer offset,
-            @Query("mentionedChannelID") String mentionedChannelID,
-            @Query("offset") Integer maxUpcomingHours,
+            @Query("max_upcoming_hours") Integer max_upcoming_hours,
+            @Query("mentioned_channel_id") String mentioned_channel_id,
+            @Query("offset") Integer offset,
             @Query("order") String order,
             @Query("org") String org,
             @Query("paginated") String paginated,

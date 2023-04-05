@@ -46,6 +46,7 @@ public class Holodex {
                 queryBuilder.getPaginated(), queryBuilder.getSort(),
                 queryBuilder.getStatus(), queryBuilder.getTopic(),
                 queryBuilder.getType());
+        System.out.println(call.request().url());
         return executeCall(call);
     }
 
