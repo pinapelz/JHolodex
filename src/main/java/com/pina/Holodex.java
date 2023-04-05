@@ -2,6 +2,8 @@ package com.pina;
 
 import com.pina.datatypes.Channel;
 import com.pina.datatypes.Video;
+import com.pina.query.ChannelQueryBuilder;
+import com.pina.query.LiveVideoQueryBuilder;
 import com.pina.query.VideoQueryBuilder;
 import com.pina.query.VideosByChannelIDQuery;
 import retrofit2.Call;
@@ -23,7 +25,7 @@ public class Holodex {
         service = retrofit.create(HolodexService.class);
     }
 
-    public List<Video> getLiveVideos(VideoQueryBuilder queryBuilder) throws HolodexException {
+    public List<Video> getLiveVideos(LiveVideoQueryBuilder queryBuilder) throws HolodexException {
         Call<List<Video>> call = service.getLiveVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
                 queryBuilder.getInclude(), queryBuilder.getLang(),
                 queryBuilder.getLimit(), queryBuilder.getMaxUpcomingHours(),
@@ -35,7 +37,7 @@ public class Holodex {
         return executeCall(call);
     }
 
-    public List<Video> getVideos(VideoQueryBuilder queryBuilder) throws HolodexException {
+    public List<Video> getVideos(LiveVideoQueryBuilder queryBuilder) throws HolodexException {
         Call<List<Video>> call = service.getVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
                 queryBuilder.getInclude(), queryBuilder.getLang(),
                 queryBuilder.getLimit(), queryBuilder.getMaxUpcomingHours(),
@@ -57,7 +59,24 @@ public class Holodex {
                 query.getLang(), query.getLimit(), query.getOffset(), query.getPaginated());
         return executeCall(call);
 
+    }
 
+    public List<Video> getVideosFromChannels(String[] channels) throws HolodexException{
+        String channelsString = String.join(",", channels);
+        Call<List<Video>> call = service.getVideosFromChannels(channelsString);
+        return executeCall(call);
+    }
+
+    public Video getVideo(VideoQueryBuilder query) throws HolodexException {
+        Call<Video> call = service.getVideo(query.getVideoId(), query.getLang(), query.getC());
+        return executeCall(call);
+    }
+
+    public List<Channel> getChannels(ChannelQueryBuilder query) throws HolodexException{
+        Call<List<Channel>> call = service.getChannels(query.getLimit(), query.getOffset(), query.getType(),
+                query.getLang(), query.getOrder(), query.getOrg(), query.getSort()
+        );
+        return executeCall(call);
     }
 
 

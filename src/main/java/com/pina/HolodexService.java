@@ -64,20 +64,20 @@ public interface HolodexService {
             @Query("paginated") String paginated
     );
 
-    @GET("/api/v2/channels/users/live")
+    @GET("/api/v2/users/live")
     Call<List<Video>> getVideosFromChannels(
-            @Query("channels") String[] channels
+            @Query("channels") String channels
     );
 
     @GET("/api/v2/videos/{videoID}")
-    Call<List<Video>> getVideo(
+    Call<Video> getVideo(
             @Path("videoID") String videoID,
             @Query("lang") String lang,
             @Query("c") String c
     );
 
     @GET("/api/v2/channels")
-    Call<List<Video>> getChannels(
+    Call<List<Channel>> getChannels(
             @Query("limit") Integer limit,
             @Query("offset") Integer offset,
             @Query("type") String type,
