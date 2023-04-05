@@ -2,6 +2,7 @@ package com.pina;
 
 import java.util.List;
 
+import com.pina.datatypes.Channel;
 import com.pina.datatypes.Video;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -10,7 +11,7 @@ import retrofit2.http.Query;
 
 public interface HolodexService {
     @GET("/api/v2/live")
-    Call<List<Video>> getLiveVideo(
+    Call<List<Video>> getLiveVideos(
             @Query("channelID") String channelID,
             @Query("id") String id,
             @Query("include") String include,
@@ -48,12 +49,12 @@ public interface HolodexService {
     );
 
     @GET("/api/v2/channels/{channelID}")
-    Call<List<Video>> getChannel(
+    Call<Channel> getChannel(
             @Path("channelID") String channelID
     );
 
     @GET("/api/v2/channels/{channelID}/{type}")
-    Call<List<Video>> getChannelType(
+    Call<List<Video>> getVideosByChannelId(
             @Path("channelID") String channelID,
             @Path("type") String type,
             @Query("include") String include,
@@ -64,7 +65,7 @@ public interface HolodexService {
     );
 
     @GET("/api/v2/channels/users/live")
-    Call<List<Video>> getLiveChannels(
+    Call<List<Video>> getVideosFromChannels(
             @Query("channels") String[] channels
     );
 

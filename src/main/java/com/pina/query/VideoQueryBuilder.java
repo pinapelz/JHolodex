@@ -1,6 +1,9 @@
 package com.pina.query;
 
-public class LiveStreamsQueryBuilder {
+public class VideoQueryBuilder {
+    /***
+     * Query parameters for /api/v2/live and /api/v2/videos
+     */
     private String channelId;
     private String id;
     private String include;
@@ -17,77 +20,77 @@ public class LiveStreamsQueryBuilder {
     private String topic;
     private String type;
 
-    public LiveStreamsQueryBuilder setChannelId(String channelId) {
+    public VideoQueryBuilder setChannelId(String channelId) {
         this.channelId = channelId;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setId(String id) {
+    public VideoQueryBuilder setId(String id) {
         this.id = id;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setInclude(String include) {
+    public VideoQueryBuilder setInclude(String include) {
         this.include = include;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setLang(String lang) {
+    public VideoQueryBuilder setLang(String lang) {
         this.lang = lang;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setLimit(Integer limit) {
+    public VideoQueryBuilder setLimit(Integer limit) {
         this.limit = limit;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setMaxUpcomingHours(Integer maxUpcomingHours) {
+    public VideoQueryBuilder setMaxUpcomingHours(Integer maxUpcomingHours) {
         this.maxUpcomingHours = maxUpcomingHours;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setMentionedChannelId(String mentionedChannelId) {
+    public VideoQueryBuilder setMentionedChannelId(String mentionedChannelId) {
         this.mentionedChannelId = mentionedChannelId;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setOffset(Integer offset) {
+    public VideoQueryBuilder setOffset(Integer offset) {
         this.offset = offset;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setOrder(String order) {
+    public VideoQueryBuilder setOrder(String order) {
         this.order = order;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setOrg(String org) {
+    public VideoQueryBuilder setOrg(String org) {
         this.org = org;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setPaginated(String paginated) {
+    public VideoQueryBuilder setPaginated(String paginated) {
         this.paginated = paginated;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setSort(String sort) {
+    public VideoQueryBuilder setSort(String sort) {
         this.sort = sort;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setStatus(String status) {
+    public VideoQueryBuilder setStatus(String status) {
         this.status = status;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setTopic(String topic) {
+    public VideoQueryBuilder setTopic(String topic) {
         this.topic = topic;
         return this;
     }
 
-    public LiveStreamsQueryBuilder setType(String type) {
+    public VideoQueryBuilder setType(String type) {
         this.type = type;
         return this;
     }

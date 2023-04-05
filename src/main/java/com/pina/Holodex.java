@@ -45,6 +45,12 @@ public class Holodex {
         return executeCall(call);
     }
 
+    public Channel getChannel(String channelId) throws HolodexException {
+        Call<Channel> call = service.getChannel(channelId);
+        return executeCall(call);
+    }
+
+
 
 
     private <T> T executeCall(Call<T> call) throws HolodexException {
