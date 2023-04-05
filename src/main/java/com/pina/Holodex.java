@@ -1,7 +1,8 @@
 package com.pina;
 
+import com.pina.datatypes.Channel;
 import com.pina.datatypes.Video;
-import com.pina.query.LiveStreamsQueryBuilder;
+import com.pina.query.VideoQueryBuilder;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -20,8 +21,8 @@ public class Holodex {
                 .build();
         service = retrofit.create(HolodexService.class);
     }
-    public List<Video> getLiveStreams(LiveStreamsQueryBuilder queryBuilder) throws HolodexException {
-        Call<List<Video>> call = service.getLiveVideo(queryBuilder.getChannelId(), queryBuilder.getId(),
+    public List<Video> getLiveVideos(VideoQueryBuilder queryBuilder) throws HolodexException {
+        Call<List<Video>> call = service.getLiveVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
                 queryBuilder.getInclude(), queryBuilder.getLang(),
                 queryBuilder.getLimit(), queryBuilder.getMaxUpcomingHours(),
                 queryBuilder.getMentionedChannelId(), queryBuilder.getOffset(),
@@ -31,6 +32,20 @@ public class Holodex {
                 queryBuilder.getType());
         return executeCall(call);
     }
+
+    public List<Video> getVideos(VideoQueryBuilder queryBuilder) throws HolodexException {
+        Call<List<Video>> call = service.getVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
+                queryBuilder.getInclude(), queryBuilder.getLang(),
+                queryBuilder.getLimit(), queryBuilder.getMaxUpcomingHours(),
+                queryBuilder.getMentionedChannelId(), queryBuilder.getOffset(),
+                queryBuilder.getOrder(), queryBuilder.getOrg(),
+                queryBuilder.getPaginated(), queryBuilder.getSort(),
+                queryBuilder.getStatus(), queryBuilder.getTopic(),
+                queryBuilder.getType());
+        return executeCall(call);
+    }
+
+
 
     private <T> T executeCall(Call<T> call) throws HolodexException {
         try {
