@@ -1,13 +1,13 @@
 package com.pina;
 
-import java.util.List;
-
 import com.pina.datatypes.Channel;
 import com.pina.datatypes.Video;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+
+import java.util.List;
 
 public interface HolodexService {
     @GET("/api/v2/live")
