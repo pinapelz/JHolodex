@@ -1,7 +1,11 @@
-# JHolodex
-A mega scuffed Java Holodex Wrapper (cuz i might need one someday)
-This is currently a work-in-progress
+# JHolodex 
+[![](https://jitpack.io/v/pinapelz/JHolodex.svg)](https://jitpack.io/#pinapelz/JHolodex)
+[![build](https://github.com/pinapelz/JHolodex/actions/workflows/maven.yml/badge.svg)](https://github.com/pinapelz/JHolodex/actions/workflows/maven.yml)
 
+
+A mega scuffed Java Holodex Wrapper (Currently a work in progress). Supports the GET Requests from [Holodex API](https://holodex.stoplight.io/). Objects are used to build queries if more than one path or parameter is used for the given request.
+
+## Usage
 ```java
 Holodex holodex = new Holodex("YOUR_API_KEY");
 Channel channel = holodex.getChannel("UC4WvIIAo89_AzGUh1AZ6Dkg");
@@ -25,6 +29,16 @@ vidoeQuery.setVideoId("9-O_IWM3184");
 Video anotherVideo = holodex.getVideo(new VideoQueryBuilder().setVideoId("9-O_IWM3184").setLang("en"));
 System.out.println(anotherVideo.channel.name + " uploaded a video titled " + anotherVideo.title +
   " on " + anotherVideo.published_at);
+```
+
+## Download
+Maven
+```xml
+<dependency>
+    <groupId>com.github.pinapelz</groupId>
+    <artifactId>JHolodex</artifactId>
+    <version>VERSION_HERE</version>
+</dependency>
 ```
 
 [Holodex License](https://docs.holodex.net/docs/holodex/8166fcec5dbe2-license)
