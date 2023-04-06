@@ -25,7 +25,7 @@ channelQuery.setOrg("Nijisanji");
 channelQuery.setLimit(75);
 List<Channel> nijisanjiMembers = holodex.getChannels(channelQuery);
 
-Video anotherVideo = holodex.getVideo(new VideoMetadataQueryBuilder().setVideoId("9-O_IWM3184").setLang("en"));
+Video anotherVideo = holodex.getVideo(new VideoByVideoIdQueryBuilder().setVideoId("9-O_IWM3184").setLang("en"));
 System.out.println(anotherVideo.channel.name + " uploaded a video titled " + anotherVideo.title +
 " on " + anotherVideo.published_at);
 ```

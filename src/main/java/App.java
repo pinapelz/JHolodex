@@ -4,7 +4,7 @@ import com.pina.datatypes.Channel;
 import com.pina.datatypes.SimpleVideo;
 import com.pina.datatypes.Video;
 import com.pina.query.ChannelQueryBuilder;
-import com.pina.query.VideoMetadataQueryBuilder;
+import com.pina.query.VideoByVideoIdQueryBuilder;
 import com.pina.query.VideoQueryBuilder;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class App
             channelQuery.setLimit(75);
             List<Channel> nijisanjiMembers = holodex.getChannels(channelQuery);
 
-            Video anotherVideo = holodex.getVideo(new VideoMetadataQueryBuilder().setVideoId("9-O_IWM3184").setLang("en"));
+            Video anotherVideo = holodex.getVideo(new VideoByVideoIdQueryBuilder().setVideoId("9-O_IWM3184").setLang("en"));
             System.out.println(anotherVideo.channel.name + " uploaded a video titled " + anotherVideo.title +
                     " on " + anotherVideo.published_at);
             } catch (HolodexException ex) {

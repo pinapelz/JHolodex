@@ -1,7 +1,7 @@
 package com.pina.query;
 
 
-public class VideoMetadataQueryBuilder {
+public class VideoByVideoIdQueryBuilder {
     /***
      * Used to get the metadata of a single video when given the video ID
      */
@@ -13,7 +13,7 @@ public class VideoMetadataQueryBuilder {
         return videoId;
     }
 
-    public VideoMetadataQueryBuilder setVideoId(String videoId) {
+    public VideoByVideoIdQueryBuilder setVideoId(String videoId) {
         this.videoId = videoId;
         return this;
     }
@@ -22,7 +22,7 @@ public class VideoMetadataQueryBuilder {
         return lang;
     }
 
-    public VideoMetadataQueryBuilder setLang(String lang) {
+    public VideoByVideoIdQueryBuilder setLang(String lang) {
         this.lang = lang;
         return this;
     }
@@ -31,7 +31,7 @@ public class VideoMetadataQueryBuilder {
         return c;
     }
 
-    public VideoMetadataQueryBuilder setC(String c) {
+    public VideoByVideoIdQueryBuilder setC(String c) {
         this.c = c;
         return this;
     }

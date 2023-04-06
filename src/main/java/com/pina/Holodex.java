@@ -4,7 +4,7 @@ import com.pina.datatypes.Channel;
 import com.pina.datatypes.SimpleVideo;
 import com.pina.datatypes.Video;
 import com.pina.query.ChannelQueryBuilder;
-import com.pina.query.VideoMetadataQueryBuilder;
+import com.pina.query.VideoByVideoIdQueryBuilder;
 import com.pina.query.VideoQueryBuilder;
 import com.pina.query.VideosByChannelIDQueryBuilder;
 import okhttp3.OkHttpClient;
@@ -89,7 +89,7 @@ public class Holodex {
         return executeCall(call);
     }
 
-    public Video getVideo(VideoMetadataQueryBuilder query) throws HolodexException {
+    public Video getVideo(VideoByVideoIdQueryBuilder query) throws HolodexException {
         Call<Video> call = service.getVideo(query.getVideoId(), query.getLang(), query.getC());
         return executeCall(call);
     }
