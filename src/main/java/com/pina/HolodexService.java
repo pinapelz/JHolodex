@@ -1,6 +1,7 @@
 package com.pina;
 
 import com.pina.datatypes.Channel;
+import com.pina.datatypes.SimpleVideo;
 import com.pina.datatypes.Video;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public interface HolodexService {
     @GET("/api/v2/live")
-    Call<List<Video>> getLiveVideos(
+    Call<List<SimpleVideo>> getLiveVideos(
             @Query("channel_id") String channel_id,
             @Query("id") String id,
             @Query("include") String include,

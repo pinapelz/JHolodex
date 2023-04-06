@@ -1,6 +1,7 @@
 package com.pina;
 
 import com.pina.datatypes.Channel;
+import com.pina.datatypes.SimpleVideo;
 import com.pina.datatypes.Video;
 import com.pina.query.ChannelQueryBuilder;
 import com.pina.query.VideoMetadataQueryBuilder;
@@ -46,8 +47,8 @@ public class Holodex {
         service = retrofit.create(HolodexService.class);
     }
 
-    public List<Video> getLiveVideos(VideoQueryBuilder queryBuilder) throws HolodexException {
-        Call<List<Video>> call = service.getLiveVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
+    public List<SimpleVideo> getLiveAndUpcomingVideos(VideoQueryBuilder queryBuilder) throws HolodexException {
+        Call<List<SimpleVideo>> call = service.getLiveVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
                 queryBuilder.getInclude(), queryBuilder.getLang(),
                 queryBuilder.getLimit(), queryBuilder.getMaxUpcomingHours(),
                 queryBuilder.getMentionedChannelId(), queryBuilder.getOffset(),

@@ -1,6 +1,7 @@
 import com.pina.Holodex;
 import com.pina.HolodexException;
 import com.pina.datatypes.Channel;
+import com.pina.datatypes.SimpleVideo;
 import com.pina.datatypes.Video;
 import com.pina.query.ChannelQueryBuilder;
 import com.pina.query.VideoMetadataQueryBuilder;
@@ -13,14 +14,15 @@ public class App
     public static void main( String[] args )
     {
         try {
-            Holodex holodex = new Holodex("API_KEY"); //API key here is not active
+            Holodex holodex = new Holodex("5c9f2643-1762-40e8-85ab-b8e7d3e433a1");
             Channel channel = holodex.getChannel("UC4WvIIAo89_AzGUh1AZ6Dkg");
             System.out.println(channel.name + " is a member of " + channel.org + " and has " + channel.suborg + " as a suborg");
 
             VideoQueryBuilder liveVideoQuery = new VideoQueryBuilder().setStatus("live").setOrg("Hololive");
-            List<Video> currentlyLiveVideos = holodex.getLiveVideos(liveVideoQuery);
+            List<SimpleVideo> currentlyLiveVideos = holodex.getLiveAndUpcomingVideos(liveVideoQuery);
             System.out.println("Currently there are " + currentlyLiveVideos.size() + " livestreams on going in Hololive");
-            for (Video video : currentlyLiveVideos) {
+
+            for (SimpleVideo video : currentlyLiveVideos) {
                 System.out.println(video.channel.name + " is currently live with " + video.live_viewers + " views");
             }
 
@@ -28,16 +30,14 @@ public class App
             channelQuery.setOrg("Nijisanji");
             channelQuery.setLimit(75);
             List<Channel> nijisanjiMembers = holodex.getChannels(channelQuery);
-            // Gets the first 75 members of Nijisanji
 
-            VideoMetadataQueryBuilder vidoeQuery = new VideoMetadataQueryBuilder();
-            vidoeQuery.setVideoId("9-O_IWM3184");
             Video anotherVideo = holodex.getVideo(new VideoMetadataQueryBuilder().setVideoId("9-O_IWM3184").setLang("en"));
-            System.out.println(anotherVideo.channel.name + " uploaded a video titled " + anotherVideo.title + " on " + anotherVideo.published_at);
+            System.out.println(anotherVideo.channel.name + " uploaded a video titled " + anotherVideo.title +
+                    " on " + anotherVideo.published_at);
+            } catch (HolodexException ex) {
+            throw new RuntimeException(ex);
+        }
 
-        }
-        catch (HolodexException e) {
-            e.printStackTrace();
-        }
     }
+
 }
