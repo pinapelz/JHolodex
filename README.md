@@ -6,6 +6,7 @@
 A mega scuffed Java Holodex Wrapper (Currently a work in progress). Supports the GET Requests from [Holodex API](https://holodex.stoplight.io/). Objects are used to build queries if more than one path or parameter is used for the given request.
 
 ## Usage
+Please check what values are available from your response through Holodex's API documentation. Null values indicate that the endpoint you are on does not serve the value you are trying to retrieve.
 ```java
 Holodex holodex = new Holodex("YOUR_API_KEY");
 Channel channel = holodex.getChannel("UC4WvIIAo89_AzGUh1AZ6Dkg");
