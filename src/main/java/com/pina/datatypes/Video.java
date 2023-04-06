@@ -13,7 +13,8 @@ public class Video extends SimpleVideo {
     public List<Video> simulcasts;
     public List<SimpleChannel> mentions;
     public String thumbnail;
-    public int songs;
+    public List<Video> reccomendations;
+    public List<Comment> comments;
 }
 
 
