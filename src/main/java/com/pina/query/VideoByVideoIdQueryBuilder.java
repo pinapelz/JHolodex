@@ -1,10 +1,9 @@
 package com.pina.query;
 
-
+/**
+ * Query builder for getting a video by video id
+ */
 public class VideoByVideoIdQueryBuilder {
-    /***
-     * Used to get the metadata of a single video when given the video ID
-     */
     private String videoId;
     private String lang;
     private String c;

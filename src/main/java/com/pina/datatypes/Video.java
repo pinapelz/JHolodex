@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
+/**
+ * Video object
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Video extends SimpleVideo {
     public List<Video> clips;

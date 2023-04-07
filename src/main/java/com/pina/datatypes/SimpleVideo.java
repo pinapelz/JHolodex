@@ -2,6 +2,9 @@ package com.pina.datatypes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Simple video object
+ */
 @JsonIgnoreProperties (ignoreUnknown = true)
 public class SimpleVideo {
     public String id;

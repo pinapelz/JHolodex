@@ -1,10 +1,9 @@
 package com.pina.query;
 
+/**
+ * Query builder for getting a set of videos matching the given parameters
+ */
 public class VideoQueryBuilder {
-    /***
-     * Query parameters for /api/v2/live and /api/v2/videos
-     * Query Live and Upcoming Videos
-     */
     private String channelId;
     private String id;
     private String include;

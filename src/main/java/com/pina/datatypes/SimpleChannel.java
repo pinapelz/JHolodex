@@ -2,6 +2,9 @@ package com.pina.datatypes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Simple channel object
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SimpleChannel {
     public String id;

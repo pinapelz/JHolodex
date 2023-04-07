@@ -1,9 +1,9 @@
 package com.pina.query;
 
+/**
+ * Query builder for getting a list of Channels matching the given parameters
+ */
 public class ChannelQueryBuilder {
-    /***
-     * Used to get a set of channels matching the given parameters
-     */
     private Integer limit;
     private Integer offset;
     private String type;
