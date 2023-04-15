@@ -30,6 +30,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class Holodex {
     private HolodexService service;
+    private int readTimeout = 35;
+    private int writeTimeout = 35;
 
     /**
      * Instantiates a new Holodex with the default base url
@@ -52,8 +54,8 @@ public class Holodex {
 
     private void initializeHolodexService(String apiKey, String baseUrl){
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
-                .writeTimeout(35, TimeUnit.SECONDS)
-                .readTimeout(35, TimeUnit.SECONDS);
+                .writeTimeout(writeTimeout, TimeUnit.SECONDS)
+                .readTimeout(readTimeout, TimeUnit.SECONDS);
         httpClient.addInterceptor(chain -> {
             Request original = chain.request();
             Request request = original.newBuilder()
@@ -68,6 +70,16 @@ public class Holodex {
                 .client(httpClient.build())
                 .build();
         service = retrofit.create(HolodexService.class);
+    }
+
+    private Holodex setReadTimeout(int readTimeout) {
+        this.readTimeout = readTimeout;
+        return this;
+    }
+
+    private Holodex setWriteTimeout(int writeTimeout) {
+        this.writeTimeout = writeTimeout;
+        return this;
     }
 
     /**
