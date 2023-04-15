@@ -1,21 +1,29 @@
 package com.pina;
 
-import com.pina.datatypes.Channel;
-import com.pina.datatypes.SimpleVideo;
-import com.pina.datatypes.Video;
-import com.pina.query.ChannelQueryBuilder;
-import com.pina.query.VideoByVideoIdQueryBuilder;
-import com.pina.query.VideoQueryBuilder;
-import com.pina.query.VideosByChannelIDQueryBuilder;
+import com.google.gson.Gson;
+import com.pina.datatypes.*;
+import com.pina.query.*;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
+import javax.xml.transform.Result;
 import java.io.IOException;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.lang.reflect.Field;
+import java.util.concurrent.TimeUnit;
+
 
 /**
  * The class for interacting with the Holodex API
@@ -43,7 +51,9 @@ public class Holodex {
     }
 
     private void initializeHolodexService(String apiKey, String baseUrl){
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
+                .writeTimeout(35, TimeUnit.SECONDS)
+                .readTimeout(35, TimeUnit.SECONDS);
         httpClient.addInterceptor(chain -> {
             Request original = chain.request();
             Request request = original.newBuilder()
@@ -166,6 +176,34 @@ public class Holodex {
         return executeCall(call);
     }
 
+    public Object searchVideo(VideoSearchQueryBuilder query) throws HolodexException {
+        Map<String, Object> payload = toMap(query);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),
+                new Gson().toJson(payload));
+        if(query.isPaginated()) {
+            Call<VideoSearchResult> call = service.postPaginatedVideoSearch(body);
+            return executeCall(call);
+        }
+        Call<List<SimpleVideo>> call = service.postVideoSearch(body);
+        return executeCall(call);
+
+    }
+
+    public static Map<String, Object> toMap(Object obj) throws HolodexException {
+        Map<String, Object> map = new HashMap<>();
+        Field[] fields = obj.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            try {
+                Object value = field.get(obj);
+                map.put(field.getName(), value);
+            } catch (IllegalAccessException e) {
+                throw new HolodexException("Failed to execute API call", e);
+            }
+        }
+        return map;
+    }
+
 
     private <T> T executeCall(Call<T> call) throws HolodexException {
         try {
@@ -180,4 +218,5 @@ public class Holodex {
             throw new HolodexException("Failed to execute API call", e);
         }
     }
+
 }

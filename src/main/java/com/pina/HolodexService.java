@@ -1,13 +1,11 @@
 package com.pina;
 
-import com.pina.datatypes.Channel;
-import com.pina.datatypes.SimpleVideo;
-import com.pina.datatypes.Video;
+import com.pina.datatypes.*;
+import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
+import javax.xml.transform.Result;
 import java.util.List;
 
 /**
@@ -174,6 +172,22 @@ public interface HolodexService {
             @Query("org") String org,
             @Query("sort") String sort
     );
+
+    /**
+     * /api/v2/search/videoSearch endpoint
+     */
+    @POST("/api/v2/search/videoSearch")
+    @Paginated(false)
+    Call<List<SimpleVideo>>  postVideoSearch(
+            @Body RequestBody videoSearchResult
+    );
+
+    @POST("/api/v2/search/videoSearch")
+    @Paginated(true)
+    Call<VideoSearchResult> postPaginatedVideoSearch(
+            @Body RequestBody videoSearchResult
+    );
+
 
 }
 
