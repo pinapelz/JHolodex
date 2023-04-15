@@ -48,7 +48,6 @@ System.out.println(video.title + " - " + video.channel.name);
 for (Comment comment : video.comments) {
 System.out.println("    "+comment.message);
 }
-}
 ```
 
 ## Download
