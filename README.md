@@ -1,8 +1,6 @@
 # JHolodex 
-[![](https://jitpack.io/v/pinapelz/JHolodex.svg)](https://jitpack.io/#pinapelz/JHolodex)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/pinapelz/JHolodex)
 [![build](https://github.com/pinapelz/JHolodex/actions/workflows/maven.yml/badge.svg)](https://github.com/pinapelz/JHolodex/actions/workflows/maven.yml)
-#### In the event JitPack is incorrect, please refer to the version number on the releases
 
 A mega scuffed Java Holodex Wrapper (Currently a work in progress). Supports the GET Requests from [Holodex API](https://holodex.stoplight.io/). Objects are used to build queries if more than one path or parameter is used for the given request.
 
@@ -54,7 +52,6 @@ System.out.println("    "+comment.message);
 ```
 
 ## Download
-[![](https://jitpack.io/v/pinapelz/JHolodex.svg)](https://jitpack.io/#pinapelz/JHolodex)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/pinapelz/JHolodex)
 ### Maven
 ```xml
