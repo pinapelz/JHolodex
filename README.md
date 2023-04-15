@@ -1,5 +1,6 @@
 # JHolodex 
 [![](https://jitpack.io/v/pinapelz/JHolodex.svg)](https://jitpack.io/#pinapelz/JHolodex)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/pinapelz/JHolodex)
 [![build](https://github.com/pinapelz/JHolodex/actions/workflows/maven.yml/badge.svg)](https://github.com/pinapelz/JHolodex/actions/workflows/maven.yml)
 #### In the event JitPack is incorrect, please refer to the version number on the releases
 
@@ -54,6 +55,7 @@ System.out.println("    "+comment.message);
 
 ## Download
 [![](https://jitpack.io/v/pinapelz/JHolodex.svg)](https://jitpack.io/#pinapelz/JHolodex)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/pinapelz/JHolodex)
 ### Maven
 ```xml
 <dependency>
