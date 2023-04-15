@@ -175,6 +175,8 @@ public interface HolodexService {
 
     /**
      * /api/v2/search/videoSearch endpoint
+     * @param videoSearchResult
+     * @return
      */
     @POST("/api/v2/search/videoSearch")
     @Paginated(false)
@@ -187,6 +189,24 @@ public interface HolodexService {
     Call<VideoSearchResult> postPaginatedVideoSearch(
             @Body RequestBody videoSearchResult
     );
+
+    /**
+     * /api/v2/search/channelSearch endpoint
+     * @param commentSearchResult
+     * @return
+     */
+    @POST("/api/v2/search/commentSearch")
+    @Paginated(false)
+    Call<List<SimpleCommentVideo>> postCommentSearch(
+            @Body RequestBody commentSearchResult
+    );
+
+    @POST("/api/v2/search/commentSearch")
+    @Paginated(true)
+    Call<CommentSearchResult> postPaginatedCommentSearch(
+            @Body RequestBody commentSearchResult
+    );
+
 
 
 }

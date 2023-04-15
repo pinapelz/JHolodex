@@ -201,6 +201,18 @@ public class Holodex {
 
     }
 
+    public Object searchComment(CommentSearchQueryBuilder query) throws HolodexException{
+        Map<String, Object> payload = toMap(query);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),
+                new Gson().toJson(payload));
+        if(query.isPaginated()) {
+            Call<CommentSearchResult> call = service.postPaginatedCommentSearch(body);
+            return executeCall(call);
+        }
+        Call<List<SimpleCommentVideo>> call = service.postCommentSearch(body);
+        return executeCall(call);
+    }
+
     public static Map<String, Object> toMap(Object obj) throws HolodexException {
         Map<String, Object> map = new HashMap<>();
         Field[] fields = obj.getClass().getDeclaredFields();
