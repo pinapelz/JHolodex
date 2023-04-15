@@ -2,6 +2,11 @@ package com.pina.datatypes;
 
 import java.util.List;
 
+/**
+ * The same as SimpleVideo, but with comments
+ * @see SimpleVideo
+ *
+ */
 public class SimpleCommentVideo {
     public String id;
     public String title;

@@ -188,6 +188,15 @@ public class Holodex {
         return executeCall(call);
     }
 
+    /**
+     * Sends a POST request to search for videos matching the VideoSearchQueryBuilder attributes
+     * If the query is paginated, the response will be a VideoSearchResult object
+     * If the query is not paginated, the response will be a list of SimpleVideo objects
+     * @param query
+     * @return
+     * @throws HolodexException
+     */
+
     public Object searchVideo(VideoSearchQueryBuilder query) throws HolodexException {
         Map<String, Object> payload = toMap(query);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),
@@ -201,6 +210,14 @@ public class Holodex {
 
     }
 
+    /**
+     * Sends a POST request to search for comments matching the CommentSearchQueryBuilder attributes
+     * If the query is paginated, the response will be a CommentSearchResult object
+     * If the query is not paginated, the response will be a list of SimpleCommentVideo objects
+     * @param query
+     * @return
+     * @throws HolodexException
+     */
     public Object searchComment(CommentSearchQueryBuilder query) throws HolodexException{
         Map<String, Object> payload = toMap(query);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),
@@ -213,7 +230,7 @@ public class Holodex {
         return executeCall(call);
     }
 
-    public static Map<String, Object> toMap(Object obj) throws HolodexException {
+    private static Map<String, Object> toMap(Object obj) throws HolodexException {
         Map<String, Object> map = new HashMap<>();
         Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {

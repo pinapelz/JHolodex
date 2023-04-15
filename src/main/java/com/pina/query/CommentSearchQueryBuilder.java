@@ -3,6 +3,10 @@ package com.pina.query;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Builder for a comment search query
+ * Default values set in constructor
+ */
 public class CommentSearchQueryBuilder {
     private String sort;
     private List<String> lang;
