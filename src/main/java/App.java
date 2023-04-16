@@ -1,7 +1,7 @@
-import com.pina.Holodex;
-import com.pina.HolodexException;
-import com.pina.datatypes.*;
-import com.pina.query.*;
+import com.pinapelz.Holodex;
+import com.pinapelz.HolodexException;
+import com.pinapelz.datatypes.*;
+import com.pinapelz.query.*;
 
 import java.util.List;
 
