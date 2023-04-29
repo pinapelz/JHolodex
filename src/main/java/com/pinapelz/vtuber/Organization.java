@@ -1,0 +1,83 @@
+package com.pinapelz.vtuber;
+
+public class Organization {
+    public static final String HOLOLIVE = "Hololive";
+    public static final String NIJISANJI = "Nijisanji";
+    public static final String INDEPENDENT = "Independent";
+    public static final String DOT_LIVE = ".LIVE";
+    public static final String INC_774 = "774inc";
+    public static final String AOGIRI_HIGHSCHOOL = "Aogiri Highschool";
+    public static final String ATELIER_LIVE = "Atelier Live";
+    public static final String AXEL_V = "Axel-V";
+    public static final String AETHERIA = "Aetheria";
+    public static final String AKIO_AIR = "AkioAir";
+    public static final String CHUKORARA = "Chukorara";
+    public static final String CLOUD_HORIZON = "Cloud Horizon";
+    public static final String CONNECTOPIA = "Connectopia";
+    public static final String EILENE_FAMILY = "Eilene Family";
+    public static final String EMOECHI = "Emoechi";
+    public static final String EIEN_PROJECT = "Eien Project";
+    public static final String GUILD_CQ = "Guild CQ";
+    public static final String HOSHIMEGURI_GAKUEN = "Hoshimeguri Gakuen";
+    public static final String HDOT_LIVE = "H.Live";
+    public static final String IRIDORI = "Iridori";
+    public static final String IDOL_CORP = "idol Corp";
+    public static final String KAMITSUBAKI = "KAMITSUBAKI";
+    public static final String KIZUNA_AI = "Kizuna AI Inc.";
+    public static final String KAWAII_MUSIC = "KAWAII MUSIC";
+    public static final String KEMOMIMI_REFLEX = "KEMOMIMI REFLE";
+    public static final String KEMONO_FRIENDS = "Kemono Friends";
+    public static final String LA_PECHE_PARTY = "La Peche Party";
+    public static final String MARBL_S = "Marbl_s";
+    public static final String MASQUERADE = "Masquerade";
+    public static final String MAHA5 = "MAHA5";
+    public static final String MYHOLO_TV = "MyHolo TV";
+    public static final String MERIDIAN_PROJECT = "Meridian Project";
+    public static final String NORI_PRO = "Nori Pro";
+    public static final String NIJIGEN = "NIJIGEN";
+    public static final String NEO_PORTE = "Neo-Porte";
+    public static final String NKSHOUJO = "NKShouji";
+    public static final String NANAHOLIC = "Nanaholic";
+    public static final String PRODUCTION_KAWAII = "Production Kawaii";
+    public static final String POLYGON = "Polygon";
+    public static final String PHASE_CONNECT = "Phase Connect";
+    public static final String PIXELA_PROJECT = "Pixela Project";
+    public static final String PRISM = "PRISM";
+    public static final String PROPRO = "ProPro";
+    public static final String PINK_PUNK_PRO = "Pink Punk Pro";
+    public static final String RIOT_MUSIC = "Riot Music";
+    public static final String REACT = "ReAcT";
+    public static final String REMEMORIES = "ReMemories";
+    public static final String REVOLUTION_HEART = "Revolution Heart";
+    public static final String RENEW_LIVE = "RenewLive";
+    public static final String SLEEP_MONSTER = "Sleep Monster";
+    public static final String SQUARE_LIVE = "Square Live";
+    public static final String SNACKNILIVE = "Snacknili";
+    public static final String SHINSOGUMI = "Shinosogumi";
+    public static final String SHEERMUSICV = " SheerMusicV (シアーミュージックV) ";
+    public static final String SEDAI_ONE = "Sedai One";
+    public static final String TSUNDERIA = "Tsunderia";
+    public static final String TWITCH_INDEPENDENTS = "Twitch Independents";
+    public static final String THE_BOX = "The Box";
+    public static final String UNREAL_NIGHT_GIRLS = "Unreal Night Girls";
+    public static final String V_DIMENSION_DOT_CREATORS = "V Dimension.Creators";
+    public static final String VOICE_ORE = "VOICE-ORE";
+    public static final String V_AND_U = "V&U";
+    public static final String VIVID = "ViViD";
+    public static final String VOMS = "VOMS";
+    public static final String VSHOJO = "VShojo";
+    public static final String VSPO = "VSpo";
+    public static final String VARIUM = "Varium";
+    public static final String VREVERIE = "VReverie";
+    public static final String VEE = "VEE";
+    public static final String WACTOR = "WACTOR";
+    public static final String WAK_ENTERTAINMENT = "WAK Entertainment";
+    public static final String X_ENCOUNT = "X enc'ount";
+    public static final String XTREME_DEEP_FIELD_PROJECT = "Xtreme Deep Field Project";
+    public static final String YUNI_CREATE = "Yuni Create";
+    public static final String YUMELIVE = "YumeLive";
+
+
+
+
+}
