@@ -9,7 +9,7 @@ import java.util.List;
 public class App {
     public static void main(String[] args) {
         try {
-            Holodex holodex = new Holodex("YOUR_API_KEY_HERE");
+            Holodex holodex = new Holodex("b910328a-0cec-406b-9b15-d4ef1abf4757");
             Channel channel = holodex.getChannel("UC4WvIIAo89_AzGUh1AZ6Dkg");
             System.out.println(channel.name + " is a member of " + channel.org + " and has " + channel.suborg + " as a suborg");
 
@@ -24,7 +24,10 @@ public class App {
             ChannelQueryBuilder channelQuery = new ChannelQueryBuilder();
             channelQuery.setOrg(Organization.NIJISANJI);
             channelQuery.setLimit(75);
+
             List<Channel> nijisanjiMembers = holodex.getChannels(channelQuery);
+
+            System.out.println("There are " + nijisanjiMembers.size() + " members in " + Organization.NIJISANJI);
 
             Video anotherVideo = holodex.getVideo(new VideoByVideoIdQueryBuilder().setVideoId("9-O_IWM3184").setLang(
                     List.of(Language.ENGLISH, Language.JAPANESE)));
@@ -33,7 +36,7 @@ public class App {
                     " on " + anotherVideo.published_at);
 
             // SEARCHING THROUGH VIDEOS AND COMMENTS
-            Object srv = holodex.searchVideo(new VideoSearchQueryBuilder().setOrg(List.of("Nijisanji")).setSort(Sort.NEWEST).
+            Object srv = holodex.searchVideo(new VideoSearchQueryBuilder().setOrg(Organization.NIJISANJI).setSort(Sort.NEWEST).
                     setTarget(Type.STREAM).setPaginated(false).setLimit(10).setOffset(0)
                     .setTopic(List.of("singing"))
             );
@@ -43,8 +46,8 @@ public class App {
             }
 
             System.out.println("\n\n\nNow Searching Comments");
-            String word = "Mumei";
-            Object scr = holodex.searchComment(new CommentSearchQueryBuilder().setOrg(List.of("Hololive")).setComment(List.of(word)).setLimit(1).setPaginated(false));
+            String word = "eating";
+            Object scr = holodex.searchComment(new CommentSearchQueryBuilder().setOrg(Organization.NIJISANJI).setComment(List.of(word)).setLimit(1).setPaginated(false));
             System.out.println("--- Search Results for comments containing kw: " + word + " ---");
             for (SimpleCommentVideo video : (List<SimpleCommentVideo>) scr) {
                 System.out.println(video.title + " - " + video.channel.name);

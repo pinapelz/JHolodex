@@ -1,6 +1,7 @@
 package com.pinapelz.query;
 
 import com.pinapelz.vtuber.Language;
+import com.pinapelz.vtuber.Organization;
 import com.pinapelz.vtuber.Sort;
 import com.pinapelz.vtuber.Type;
 
@@ -125,8 +126,22 @@ public class VideoSearchQueryBuilder {
         return org;
     }
 
-    public VideoSearchQueryBuilder setOrg(List<String> org) {
-        this.org = org;
+    public VideoSearchQueryBuilder setOrg(String org) {
+        this.org = List.of(org);
+        return this;
+    }
+
+    public VideoSearchQueryBuilder setOrg(Organization org) {
+        this.org = List.of(org.toString());
+        return this;
+    }
+
+    public VideoSearchQueryBuilder setOrg(List<Organization> org) {
+        List<String> orgs = new ArrayList<String>();
+        for (Organization o : org) {
+            orgs.add(o.toString());
+        }
+        this.org = orgs;
         return this;
     }
 
