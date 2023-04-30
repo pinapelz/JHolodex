@@ -9,7 +9,7 @@ import java.util.List;
 public class App {
     public static void main(String[] args) {
         try {
-            Holodex holodex = new Holodex("b910328a-0cec-406b-9b15-d4ef1abf4757");
+            Holodex holodex = new Holodex("YOUR_API_KEY_HERE");
             Channel channel = holodex.getChannel("UC4WvIIAo89_AzGUh1AZ6Dkg");
             System.out.println(channel.name + " is a member of " + channel.org + " and has " + channel.suborg + " as a suborg");
 
