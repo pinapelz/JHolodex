@@ -53,7 +53,7 @@ public class App {
             }
 
             System.out.println("\n\n\nNow Searching Comments");
-            String word = "Mumei";
+            String word = "yabe";
             Object scr = holodex.searchComment(new CommentSearchQueryBuilder().setOrg(List.of("Hololive")).setComment(List.of(word)).setLimit(1).setPaginated(false));
             System.out.println("--- Search Results for comments containing kw: " + word + " ---");
             for (SimpleCommentVideo video : (List<SimpleCommentVideo>) scr) {

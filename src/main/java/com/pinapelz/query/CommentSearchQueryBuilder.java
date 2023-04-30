@@ -1,6 +1,7 @@
 package com.pinapelz.query;
 
 import com.pinapelz.vtuber.Language;
+import com.pinapelz.vtuber.Organization;
 import com.pinapelz.vtuber.Sort;
 import com.pinapelz.vtuber.Type;
 
@@ -130,10 +131,25 @@ public class CommentSearchQueryBuilder {
         return org;
     }
 
-    public CommentSearchQueryBuilder setOrg(List<String> org) {
-        this.org = org;
+    public CommentSearchQueryBuilder setOrg(String org) {
+        this.org = List.of(org);
         return this;
     }
+
+    public CommentSearchQueryBuilder setOrg(Organization org) {
+        this.org = List.of(org.toString());
+        return this;
+    }
+
+    public CommentSearchQueryBuilder setOrg(List<Organization> org) {
+        List<String> orgs = new ArrayList<String>();
+        for (Organization o : org) {
+            orgs.add(o.toString());
+        }
+        this.org = orgs;
+        return this;
+    }
+
 
     public List<String> getComment() {
         return comment;
