@@ -1,5 +1,10 @@
 package com.pinapelz.query;
 
+import com.pinapelz.datatypes.Video;
+import com.pinapelz.vtuber.*;
+
+import java.util.List;
+
 /**
  * Query builder for getting a set of videos matching the given parameters
  */
@@ -35,10 +40,39 @@ public class VideoQueryBuilder {
         return this;
     }
 
+    public VideoQueryBuilder setInclude(ExtraData include) {
+        this.include = include.toString();
+        return this;
+    }
+
+    public VideoQueryBuilder setInclude(List<ExtraData> include){
+        String[] includeStrings = new String[include.size()];
+        for (int i = 0; i < include.size(); i++) {
+            includeStrings[i] = include.get(i).toString();
+        }
+        this.include = String.join(",", includeStrings);
+        return this;
+    }
+
     public VideoQueryBuilder setLang(String lang) {
         this.lang = lang;
         return this;
     }
+
+    public VideoQueryBuilder setLang(Language lang) {
+        this.lang = lang.toString();
+        return this;
+    }
+
+    public VideoQueryBuilder setLang(List<Language> lang) {
+        String[] langStrings = new String[lang.size()];
+        for (int i = 0; i < lang.size(); i++) {
+            langStrings[i] = lang.get(i).toString();
+        }
+        this.lang = String.join(",", langStrings);
+        return this;
+    }
+
 
     public VideoQueryBuilder setLimit(Integer limit) {
         this.limit = limit;
@@ -65,8 +99,18 @@ public class VideoQueryBuilder {
         return this;
     }
 
+    public VideoQueryBuilder setOrder(Order order) {
+        this.order = order.toString();
+        return this;
+    }
+
     public VideoQueryBuilder setOrg(String org) {
         this.org = org;
+        return this;
+    }
+
+    public VideoQueryBuilder setOrg(Organization org) {
+        this.org = org.toString();
         return this;
     }
 
@@ -80,8 +124,18 @@ public class VideoQueryBuilder {
         return this;
     }
 
+    public VideoQueryBuilder setSort(Sort sort) {
+        this.sort = sort.toString();
+        return this;
+    }
+
     public VideoQueryBuilder setStatus(String status) {
         this.status = status;
+        return this;
+    }
+
+    public VideoQueryBuilder setStatus(Status status) {
+        this.status = status.toString();
         return this;
     }
 

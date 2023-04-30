@@ -1,6 +1,16 @@
 package com.pinapelz.vtuber;
 
-public class Order {
-    public static final String ASC = "asc";
-    public static final String DESC = "desc";
+public enum Order {
+    ASC("asc"),
+    DESC("desc");
+
+    private final String value;
+    Order(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

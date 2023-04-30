@@ -1,6 +1,16 @@
 package com.pinapelz.vtuber;
 
-public class Type {
-    public static final String STREAM = "stream";
-    public static final String CLIP = "clip";
+public enum Type {
+    STREAM("stream"),
+    CLIP("clip");
+
+    private final String value;
+    Type(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

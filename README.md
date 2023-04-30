@@ -36,13 +36,15 @@ public class App {
             channelQuery.setLimit(75);
             List<Channel> nijisanjiMembers = holodex.getChannels(channelQuery);
 
-            Video anotherVideo = holodex.getVideo(new VideoByVideoIdQueryBuilder().setVideoId("9-O_IWM3184").setLang(Language.ENGLISH));
+            Video anotherVideo = holodex.getVideo(new VideoByVideoIdQueryBuilder().setVideoId("9-O_IWM3184").setLang(
+                    List.of(Language.ENGLISH, Language.JAPANESE)));
+
             System.out.println(anotherVideo.channel.name + " uploaded a video titled " + anotherVideo.title +
                     " on " + anotherVideo.published_at);
 
             // SEARCHING THROUGH VIDEOS AND COMMENTS
             Object srv = holodex.searchVideo(new VideoSearchQueryBuilder().setOrg(List.of("Nijisanji")).setSort(Sort.NEWEST).
-                    setTarget(List.of(Type.STREAM)).setPaginated(false).setLimit(10).setOffset(0)
+                    setTarget(Type.STREAM).setPaginated(false).setLimit(10).setOffset(0)
                     .setTopic(List.of("singing"))
             );
             System.out.println("--- Search Results ---");
@@ -67,7 +69,6 @@ public class App {
 
     }
 }
-
 ```
 
 ## Download

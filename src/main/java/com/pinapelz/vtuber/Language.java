@@ -1,12 +1,24 @@
 package com.pinapelz.vtuber;
 
-public class Language {
-    public static final String ENGLISH = "en";
-    public static final String JAPANESE = "jp";
-    public static final String SPANISH = "es";
-    public static final String CHINESE = "zh";
-    public static final String KOREAN = "ko";
-    public static final String FRENCH = "fr";
-    public static final String INDONESIAN = "id";
-    public static final String RUSSIAN = "ru";
+public enum Language {
+    ENGLISH("en"),
+    JAPANESE("jp"),
+    SPANISH("es"),
+    CHINESE("zh"),
+    KOREAN("ko"),
+    FRENCH("fr"),
+    INDONESIAN("id"),
+    RUSSIAN("ru");
+
+    private final String code;
+
+    Language(String code) {
+        this.code = code;
+    }
+
+    @Override
+    public String toString() {
+        return code;
+    }
+
 }

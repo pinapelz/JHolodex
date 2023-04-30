@@ -1,5 +1,9 @@
 package com.pinapelz.query;
 
+import com.pinapelz.vtuber.Language;
+import com.pinapelz.vtuber.Sort;
+import com.pinapelz.vtuber.Type;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +13,6 @@ import java.util.List;
  */
 public class CommentSearchQueryBuilder {
     private String sort;
-    private List<String> lang;
     private List<String> target;
     private List<String> conditions;
     private List<String> topic;
@@ -19,6 +22,7 @@ public class CommentSearchQueryBuilder {
     private boolean paginated;
     private int offset;
     private int limit;
+    private List<String> lang;
 
     public CommentSearchQueryBuilder(){
         this.sort = "newest";
@@ -42,11 +46,30 @@ public class CommentSearchQueryBuilder {
         return this;
     }
 
+    public CommentSearchQueryBuilder setSort(Sort sort) {
+        this.sort = sort.toString();
+        return this;
+    }
+
     public List<String> getLang() {
         return lang;
     }
 
-    public CommentSearchQueryBuilder setLang(List<String> lang) {
+    public CommentSearchQueryBuilder setLang(String lang) {
+        this.lang = List.of(lang);
+        return this;
+    }
+
+    public CommentSearchQueryBuilder setLang(Language lang) {
+        this.lang = List.of(lang.toString());
+        return this;
+    }
+
+    public CommentSearchQueryBuilder setLang(Language[] language) {
+        List<String> lang = new ArrayList<String>();
+        for (Language l : language) {
+            lang.add(l.toString());
+        }
         this.lang = lang;
         return this;
     }
@@ -55,10 +78,26 @@ public class CommentSearchQueryBuilder {
         return target;
     }
 
-    public CommentSearchQueryBuilder setTarget(List<String> target) {
-        this.target = target;
+    public CommentSearchQueryBuilder setTarget(String target) {
+        this.target = List.of(target);
         return this;
     }
+
+    public CommentSearchQueryBuilder setTarget(Type target) {
+        this.target = List.of(target.toString());
+        return this;
+    }
+
+    public CommentSearchQueryBuilder setTarget(List<Type> target) {
+        List<String> targets = new ArrayList<String>();
+        for (Type t : target) {
+            targets.add(t.toString());
+        }
+        this.target = targets;
+        return this;
+    }
+
+
 
     public List<String> getConditions() {
         return conditions;

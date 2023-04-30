@@ -1,5 +1,9 @@
 package com.pinapelz.query;
 
+import com.pinapelz.vtuber.Language;
+import com.pinapelz.vtuber.Sort;
+import com.pinapelz.vtuber.Type;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,12 +46,27 @@ public class VideoSearchQueryBuilder {
         return this;
     }
 
+    public VideoSearchQueryBuilder setSort(Sort sort) {
+        this.sort = sort.toString();
+        return this;
+    }
+
     public List<String> getLang() {
         return lang;
     }
 
-    public VideoSearchQueryBuilder setLang(List<String> lang) {
-        this.lang = lang;
+    public VideoSearchQueryBuilder setLang(String lang) {
+        this.lang = List.of(lang);
+        return this;
+    }
+
+    public VideoSearchQueryBuilder setLang(Language lang) {
+        this.lang = List.of(lang.toString());
+        return this;
+    }
+
+    public VideoSearchQueryBuilder setLang(List<String> language) {
+        this.lang = language;
         return this;
     }
 
@@ -55,10 +74,25 @@ public class VideoSearchQueryBuilder {
         return target;
     }
 
-    public VideoSearchQueryBuilder setTarget(List<String> target) {
-        this.target = target;
+    public VideoSearchQueryBuilder  setTarget(String target) {
+        this.target = List.of(target);
         return this;
     }
+
+    public VideoSearchQueryBuilder  setTarget(Type target) {
+        this.target = List.of(target.toString());
+        return this;
+    }
+
+    public VideoSearchQueryBuilder  setTarget(List<Type> target) {
+        List<String> targets = new ArrayList<String>();
+        for (Type t : target) {
+            targets.add(t.toString());
+        }
+        this.target = targets;
+        return this;
+    }
+
 
     public List<String> getConditions() {
         return conditions;
