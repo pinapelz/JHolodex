@@ -75,7 +75,7 @@ public class App {
 ```
 
 ## Download
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/pinapelz/JHolodex)
+![](https://img.shields.io/github/v/release/pinapelz/JHolodex)
 [![](https://jitpack.io/v/pinapelz/JHolodex.svg)](https://jitpack.io/#pinapelz/JHolodex)
 ### Maven
 ```xml
