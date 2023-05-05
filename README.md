@@ -7,6 +7,7 @@ A mega scuffed Java Holodex Wrapper (Currently a work in progress). Supports the
 
 ## Usage
 Please check what values are available from your response through Holodex's API documentation. Null values indicate that the endpoint you are on does not serve the value you are trying to retrieve.
+
 ```java
 import com.pinapelz.Holodex;
 import com.pinapelz.HolodexException;
