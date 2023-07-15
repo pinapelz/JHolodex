@@ -1,85 +1,26 @@
-# JHolodex 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/pinapelz/JHolodex)
-[![](https://jitpack.io/v/pinapelz/JHolodex.svg)](https://jitpack.io/#pinapelz/JHolodex)
+# JHolodex
 [![build](https://github.com/pinapelz/JHolodex/actions/workflows/maven.yml/badge.svg)](https://github.com/pinapelz/JHolodex/actions/workflows/maven.yml)
 
-A mega scuffed Java Holodex Wrapper (Currently a work in progress). Supports the GET Requests from [Holodex API](https://holodex.stoplight.io/). Objects are used to build queries if more than one path or parameter is used for the given request.
+A Java wrapper for the [Holodex API](https://docs.holodex.net/#section/Holodex-API-Documentation).
 
-## Usage
-Please check what values are available from your response through Holodex's API documentation. Null values indicate that the endpoint you are on does not serve the value you are trying to retrieve.
-
-```java
-import com.pinapelz.Holodex;
-import com.pinapelz.HolodexException;
-import com.pinapelz.datatypes.*;
-import com.pinapelz.vtuber.*;
-import com.pinapelz.query.*;
-
-import java.util.List;
-
-public class App {
-    public static void main(String[] args) {
-        try {
-            Holodex holodex = new Holodex("YOUR_API_KEY_HERE");
-            Channel channel = holodex.getChannel("UC4WvIIAo89_AzGUh1AZ6Dkg");
-            System.out.println(channel.name + " is a member of " + channel.org + " and has " + channel.suborg + " as a suborg");
-
-            VideoQueryBuilder liveVideoQuery = new VideoQueryBuilder().setStatus(Status.LIVE).setOrg(Organization.HOLOLIVE);
-            List<SimpleVideo> currentlyLiveVideos = holodex.getLiveAndUpcomingVideos(liveVideoQuery);
-            System.out.println("Currently there are " + currentlyLiveVideos.size() + " livestreams on going in Hololive");
-
-            for (SimpleVideo video : currentlyLiveVideos) {
-                System.out.println(video.channel.name + " is currently live with " + video.live_viewers + " views");
-            }
-
-            ChannelQueryBuilder channelQuery = new ChannelQueryBuilder();
-            channelQuery.setOrg(Organization.NIJISANJI);
-            channelQuery.setLimit(75);
-
-            List<Channel> nijisanjiMembers = holodex.getChannels(channelQuery);
-
-            System.out.println("There are " + nijisanjiMembers.size() + " members in " + Organization.NIJISANJI);
-
-            Video anotherVideo = holodex.getVideo(new VideoByVideoIdQueryBuilder().setVideoId("9-O_IWM3184").setLang(
-                    List.of(Language.ENGLISH, Language.JAPANESE)));
-
-            System.out.println(anotherVideo.channel.name + " uploaded a video titled " + anotherVideo.title +
-                    " on " + anotherVideo.published_at);
-
-            // SEARCHING THROUGH VIDEOS AND COMMENTS
-            Object srv = holodex.searchVideo(new VideoSearchQueryBuilder().setOrg(Organization.NIJISANJI).setSort(Sort.NEWEST).
-                    setTarget(Type.STREAM).setPaginated(false).setLimit(10).setOffset(0)
-                    .setTopic(List.of("singing"))
-            );
-            System.out.println("--- Search Results ---");
-            for (SimpleVideo video : (List<SimpleVideo>) srv) {
-                System.out.println(video.title + " - " + video.channel.name);
-            }
-
-            System.out.println("\n\n\nNow Searching Comments");
-            String word = "eating";
-            Object scr = holodex.searchComment(new CommentSearchQueryBuilder().setOrg(Organization.NIJISANJI).setComment(List.of(word)).setLimit(1).setPaginated(false));
-            System.out.println("--- Search Results for comments containing kw: " + word + " ---");
-            for (SimpleCommentVideo video : (List<SimpleCommentVideo>) scr) {
-                System.out.println(video.title + " - " + video.channel.name);
-                for (Comment comment : video.comments) {
-                    System.out.println("    " + comment.message);
-                }
-            }
-        } catch (HolodexException ex) {
-            throw new RuntimeException(ex);
-        }
+All GET and POST requests are supported and is modelled after the Holodex API.
+Please check the [Holodex API](https://holodex.stoplight.io/) for more information regarding the specifications
 
 
-    }
-}
-```
+[Holodex License](https://docs.holodex.net/#section/LICENSE)
 
 ## Download
 ![](https://img.shields.io/github/v/release/pinapelz/JHolodex)
 [![](https://jitpack.io/v/pinapelz/JHolodex.svg)](https://jitpack.io/#pinapelz/JHolodex)
 ### Maven
 ```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
 <dependency>
     <groupId>com.github.pinapelz</groupId>
     <artifactId>JHolodex</artifactId>
@@ -88,10 +29,97 @@ public class App {
 ```
 
 ### Gradle
-```gradle
+```java
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+
 dependencies {
         implementation 'com.github.pinapelz:JHolodex:Tag'
 }
 ```
 #### Add [JitPack](https://jitpack.io/) to your list of repositories
-#### [Holodex License](https://docs.holodex.net/docs/holodex/8166fcec5dbe2-license)
+
+
+
+## Getting Started
+Please check what values are available at each endpoint through the [Holodex API Documentation](https://docs.holodex.net/#section/Holodex-API-Documentation).
+
+The use of enums is optional, you can always pass in Strings as parameters as they appear on Holodex
+
+The following are some example use cases to get you started.
+### Channel Information
+```java
+Holodex holodex = new Holodex("YOUR_API_KEY_HERE");
+Channel channel = holodex.getChannel("UCupmjRr7kPgzXKh-cPxxGbg");
+System.out.println(channel.name); // Erina Ch. エリナ・マキナ 【Phase Connect】
+System.out.println(channel.english_name); // Erina Makina    # This provides an English or localized name if available
+System.out.println(channel.type); // vtuber
+System.out.println(channel.subscriber_count); // 28500
+```
+
+### Live and Upcoming Videos
+Queries the videos for a particular channel
+```java
+List<Video> videos = holodex.getVideos(new VideoQueryBuilder().setChannelId("UCupmjRr7kPgzXKh-cPxxGbg")
+.setStatus(Status.PAST).setLimit(5));
+for (Video video : videos) {
+    System.out.println(video.title + " - Currently: " + video.status);
+    System.out.println(video.start_scheduled);
+    System.out.println(video.id);
+}
+```
+Functions similarly to the above but contains the following [default parameters](https://docs.holodex.net/#/paths/~1live/get)
+```java
+List<SimpleVideo> videos = holodex.getLiveAndUpcomingVideos(new VideoQueryBuilder().setChannelId("UCupmjRr7kPgzXKh-cPxxGbg"));
+for (SimpleVideo video : videos) {
+    System.out.println(video.title + " - Currently: " + video.status);
+}
+```
+
+### Video Information
+```java
+Video video = holodex.getVideo(new VideoByVideoIdQueryBuilder().setVideoId("CN4_2sEx6vA"));
+System.out.println(video.title); // HAPPY ONE YEAR OF ERINA!!! 🐯
+System.out.println(video.status); // past
+System.out.println(video.published_at); // 2023-07-12T08:46:57.000Z
+```
+
+### List Channels
+```java
+List<Channel> phaseConnectChannels = holodex.getChannels(new ChannelQueryBuilder().setOrg(Organization.PHASE_CONNECT).setLimit(50));
+System.out.println(phaseConnectChannels.size()); // 26
+for (Channel channel : phaseConnectChannels) {
+    System.out.println(channel.name);
+}
+```
+
+### Searching for Videos
+```java
+Object srv = holodex.searchVideo(new VideoSearchQueryBuilder().setSort("newest").setTopic(List.of("Music_Cover")).
+        setPaginated(true).setLimit(50));
+System.out.println(srv.getClass());
+List videos = ((VideoSearchResult) srv).items;
+System.out.println(videos.size());
+for (Object video : videos) {
+    SimpleVideo vid = (SimpleVideo) video;
+    System.out.println(vid.title + vid.status);
+    System.out.println(vid.id);
+}
+```
+
+### Searching Comments
+```java
+Object scr = holodex.searchComment(new CommentSearchQueryBuilder().setOrg(Organization.NIJISANJI).
+        setComment(List.of("cover", "cool")).setLimit(5).setPaginated(false));
+for (SimpleCommentVideo video : (List<SimpleCommentVideo>) scr) {
+    System.out.println(video.title + " - " + video.channel.name);
+    for (Comment comment : video.comments) {
+        System.out.println("    " + comment.message);
+    }
+}
+```
+
