@@ -1,15 +1,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.github.pinapelz</groupId>
+    <groupId>com.pinapelz</groupId>
     <artifactId>jholodex</artifactId>
     <version>1.4</version>
+    <packaging>jar</packaging>
     <name>JHolodex</name>
-    <url>http://maven.apache.org</url>
+    <description>A Java wrapper for the Holodex API</description>
+    <url>https://github.com/pinapelz/JHolodex</url>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Yukai Shan</name>
+            <email>yukais@pinapelz.com</email>
+            <organization>com.pinapelz</organization>
+            <organizationUrl>https://github.com/pinapelz/JHolodex</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git://github.com/pinapelz/JHolodex.git</connection>
+        <developerConnection>scm:git:ssh://github.com:pinapelz/JHolodex.git</developerConnection>
+        <url>http://github.com/pinapelz/JHolodex/tree/main</url>
+    </scm>
     <distributionManagement>
         <repository>
             <id>github</id>
@@ -37,18 +58,17 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>4.9.0</version>
+            <version>4.12.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20230618</version>
+            <version>20231013</version>
         </dependency>
 
 
