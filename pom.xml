@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pinapelz</groupId>
     <artifactId>jholodex</artifactId>
-    <version>1.4</version>
+    <version>1.41</version>
     <packaging>jar</packaging>
     <name>JHolodex</name>
     <description>A Java wrapper for the Holodex API</description>
