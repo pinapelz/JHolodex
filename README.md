@@ -24,20 +24,12 @@ Please check the [Holodex API](https://holodex.stoplight.io/) for more informati
 ```
 
 ### Gradle
-[![](https://jitpack.io/v/pinapelz/JHolodex.svg)](https://jitpack.io/#pinapelz/JHolodex)
+![Maven Central](https://img.shields.io/maven-central/v/com.pinapelz/jholodex)
 ```java
-allprojects {
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
-}
-
-dependencies {
-        implementation 'com.github.pinapelz:JHolodex:Tag'
-}
+implementation group: 'com.pinapelz', name: 'jholodex', version: '1.4'
 ```
-#### Add [JitPack](https://jitpack.io/) to your list of repositories
+
+Alternatively use Jitpack for pre-releases
 
 
 
