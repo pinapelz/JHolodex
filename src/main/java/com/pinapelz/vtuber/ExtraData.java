@@ -1,5 +1,11 @@
 package com.pinapelz.vtuber;
 
+/**
+ * <p>ExtraData class.</p>
+ *
+ * @author pinapelz
+ * @version $Id: $Id
+ */
 public enum ExtraData {
     CLIPS("clips"),
     REFERS("refers"),
@@ -17,9 +23,14 @@ public enum ExtraData {
         this.value = value;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         return value;
+    }
+
+    public boolean isExtraData(String extraData) {
+        return this.value.equals(extraData);
     }
 
 

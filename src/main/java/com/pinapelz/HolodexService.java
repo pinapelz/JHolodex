@@ -9,6 +9,9 @@ import java.util.List;
 
 /**
  * The interface Holodex service.
+ *
+ * @author pinapelz
+ * @version $Id: $Id
  */
 public interface HolodexService {
     /**
@@ -174,8 +177,9 @@ public interface HolodexService {
 
     /**
      * /api/v2/search/videoSearch endpoint
-     * @param videoSearchResult
-     * @return
+     *
+     * @param videoSearchResult a {@link okhttp3.RequestBody} object.
+     * @return a {@link retrofit2.Call} object.
      */
     @POST("/api/v2/search/videoSearch")
     @Paginated(false)
@@ -183,6 +187,12 @@ public interface HolodexService {
             @Body RequestBody videoSearchResult
     );
 
+    /**
+     * <p>postPaginatedVideoSearch.</p>
+     *
+     * @param videoSearchResult a {@link okhttp3.RequestBody} object.
+     * @return a {@link retrofit2.Call} object.
+     */
     @POST("/api/v2/search/videoSearch")
     @Paginated(true)
     Call<VideoSearchResult> postPaginatedVideoSearch(
@@ -191,8 +201,9 @@ public interface HolodexService {
 
     /**
      * /api/v2/search/channelSearch endpoint
-     * @param commentSearchResult
-     * @return
+     *
+     * @param commentSearchResult a {@link okhttp3.RequestBody} object.
+     * @return a {@link retrofit2.Call} object.
      */
     @POST("/api/v2/search/commentSearch")
     @Paginated(false)
@@ -200,6 +211,12 @@ public interface HolodexService {
             @Body RequestBody commentSearchResult
     );
 
+    /**
+     * <p>postPaginatedCommentSearch.</p>
+     *
+     * @param commentSearchResult a {@link okhttp3.RequestBody} object.
+     * @return a {@link retrofit2.Call} object.
+     */
     @POST("/api/v2/search/commentSearch")
     @Paginated(true)
     Call<CommentSearchResult> postPaginatedCommentSearch(

@@ -4,6 +4,9 @@ import java.util.List;
 
 /**
  * Result object for a paginated video search
+ *
+ * @author pinapelz
+ * @version $Id: $Id
  */
 public class VideoSearchResult {
     public int total;

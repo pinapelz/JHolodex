@@ -1,5 +1,11 @@
 package com.pinapelz.vtuber;
 
+/**
+ * <p>Organization class.</p>
+ *
+ * @author pinapelz
+ * @version $Id: $Id
+ */
 public enum Organization {
     HOLOLIVE("Hololive"),
     NIJISANJI("Nijisanji"),
@@ -83,9 +89,14 @@ public enum Organization {
         this.name = name;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         return name;
+    }
+
+    public boolean isOrg(String org) {
+        return this.name.equals(org);
     }
 
 

@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Simple video object
+ *
+ * @author pinapelz
+ * @version $Id: $Id
  */
 @JsonIgnoreProperties (ignoreUnknown = true)
 public class SimpleVideo {

@@ -21,6 +21,9 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * The class for interacting with the Holodex API
+ *
+ * @author pinapelz
+ * @version $Id: $Id
  */
 public class Holodex {
     private HolodexService service;
@@ -81,7 +84,7 @@ public class Holodex {
      *
      * @param queryBuilder the query builder
      * @return A list of upcoming and/or live SimpleVideos
-     * @throws HolodexException the holodex exception
+     * @throws com.pinapelz.HolodexException the holodex exception
      */
     public List<SimpleVideo> getLiveAndUpcomingVideos(VideoQueryBuilder queryBuilder) throws HolodexException {
         Call<List<SimpleVideo>> call = service.getLiveVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
@@ -100,7 +103,7 @@ public class Holodex {
      *
      * @param queryBuilder the query builder
      * @return list of videos
-     * @throws HolodexException the holodex exception
+     * @throws com.pinapelz.HolodexException the holodex exception
      */
     public List<Video> getVideos(VideoQueryBuilder queryBuilder) throws HolodexException {
         Call<List<Video>> call = service.getVideos(queryBuilder.getChannelId(), queryBuilder.getId(),
@@ -119,7 +122,7 @@ public class Holodex {
      *
      * @param channelId the channel id
      * @return the Channel
-     * @throws HolodexException the holodex exception
+     * @throws com.pinapelz.HolodexException the holodex exception
      */
     public Channel getChannel(String channelId) throws HolodexException {
         Call<Channel> call = service.getChannel(channelId);
@@ -132,7 +135,7 @@ public class Holodex {
      *
      * @param query the query
      * @return List of videos matching the query
-     * @throws HolodexException the holodex exception
+     * @throws com.pinapelz.HolodexException the holodex exception
      */
     public List<Video> getVideosByChannelId(VideosByChannelIDQueryBuilder query) throws HolodexException {
         Call<List<Video>> call = service.getVideosByChannelId(query.getChannelId(), query.getType(), query.getInclude(),
@@ -148,7 +151,7 @@ public class Holodex {
      *
      * @param channels the channel ids to get videos from
      * @return List of live and/or upcoming videos where the channel id is the author
-     * @throws HolodexException the holodex exception
+     * @throws com.pinapelz.HolodexException the holodex exception
      */
     public List<Video> getVideosFromChannels(String[] channels) throws HolodexException{
         String channelsString = String.join(",", channels);
@@ -161,7 +164,7 @@ public class Holodex {
      *
      * @param query the query
      * @return Video matching the query
-     * @throws HolodexException holodex exception
+     * @throws com.pinapelz.HolodexException holodex exception
      */
     public Video getVideo(VideoByVideoIdQueryBuilder query) throws HolodexException {
         Call<Video> call = service.getVideo(query.getVideoId(), query.getLang(), query.getC());
@@ -173,7 +176,7 @@ public class Holodex {
      *
      * @param query the query
      * @return List of channels matching the query
-     * @throws HolodexException the holodex exception
+     * @throws com.pinapelz.HolodexException the holodex exception
      */
     public List<Channel> getChannels(ChannelQueryBuilder query) throws HolodexException{
         Call<List<Channel>> call = service.getChannels(query.getLimit(), query.getOffset(), query.getType(),
@@ -186,11 +189,11 @@ public class Holodex {
      * Sends a POST request to search for videos matching the VideoSearchQueryBuilder attributes
      * If the query is paginated, the response will be a VideoSearchResult object
      * If the query is not paginated, the response will be a list of SimpleVideo objects
-     * @param query
-     * @return
-     * @throws HolodexException
+     *
+     * @param query a {@link com.pinapelz.query.VideoSearchQueryBuilder} object.
+     * @throws com.pinapelz.HolodexException if any.
+     * @return a {@link java.lang.Object} object.
      */
-
     public Object searchVideo(VideoSearchQueryBuilder query) throws HolodexException {
         Map<String, Object> payload = toMap(query);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),
@@ -208,9 +211,10 @@ public class Holodex {
      * Sends a POST request to search for comments matching the CommentSearchQueryBuilder attributes
      * If the query is paginated, the response will be a CommentSearchResult object
      * If the query is not paginated, the response will be a list of SimpleCommentVideo objects
-     * @param query
-     * @return
-     * @throws HolodexException
+     *
+     * @param query a {@link com.pinapelz.query.CommentSearchQueryBuilder} object.
+     * @throws com.pinapelz.HolodexException if any.
+     * @return a {@link java.lang.Object} object.
      */
     public Object searchComment(CommentSearchQueryBuilder query) throws HolodexException{
         Map<String, Object> payload = toMap(query);

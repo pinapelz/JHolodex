@@ -2,6 +2,9 @@ package com.pinapelz;
 
 /**
  * Class for Holodex related exceptions
+ *
+ * @author pinapelz
+ * @version $Id: $Id
  */
 public class HolodexException extends Exception{
     /**

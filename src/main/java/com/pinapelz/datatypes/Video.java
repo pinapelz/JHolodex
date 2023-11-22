@@ -7,6 +7,9 @@ import java.util.List;
 
 /**
  * Video object
+ *
+ * @author pinapelz
+ * @version $Id: $Id
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Video extends SimpleVideo {

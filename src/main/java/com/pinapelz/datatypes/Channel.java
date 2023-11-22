@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Channel object
+ *
+ * @author pinapelz
+ * @version $Id: $Id
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Channel extends SimpleChannel{

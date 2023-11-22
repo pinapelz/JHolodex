@@ -12,12 +12,24 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
+/**
+ * <p>VideoSearchResultConverterFactory class.</p>
+ *
+ * @author pinapelz
+ * @version $Id: $Id
+ */
 public class VideoSearchResultConverterFactory extends Converter.Factory {
 
+    /**
+     * <p>create.</p>
+     *
+     * @return a {@link com.pinapelz.factory.VideoSearchResultConverterFactory} object.
+     */
     public static VideoSearchResultConverterFactory create() {
         return new VideoSearchResultConverterFactory();
     }
 
+    /** {@inheritDoc} */
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
         boolean isPaginated = false;

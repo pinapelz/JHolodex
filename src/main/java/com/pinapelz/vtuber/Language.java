@@ -1,5 +1,11 @@
 package com.pinapelz.vtuber;
 
+/**
+ * <p>Language class.</p>
+ *
+ * @author pinapelz
+ * @version $Id: $Id
+ */
 public enum Language {
     ENGLISH("en"),
     JAPANESE("jp"),
@@ -16,9 +22,14 @@ public enum Language {
         this.code = code;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         return code;
+    }
+
+    public boolean isLanguage(String language) {
+        return this.code.equals(language);
     }
 
 }

@@ -4,8 +4,10 @@ import java.util.List;
 
 /**
  * The same as SimpleVideo, but with comments
- * @see SimpleVideo
  *
+ * @see SimpleVideo
+ * @author pinapelz
+ * @version $Id: $Id
  */
 public class SimpleCommentVideo {
     public String id;

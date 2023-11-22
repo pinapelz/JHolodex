@@ -14,13 +14,6 @@ Please check the [Holodex API](https://holodex.stoplight.io/) for more informati
 [![](https://jitpack.io/v/pinapelz/JHolodex.svg)](https://jitpack.io/#pinapelz/JHolodex)
 ### Maven
 ```xml
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-
 <dependency>
     <groupId>com.github.pinapelz</groupId>
     <artifactId>JHolodex</artifactId>

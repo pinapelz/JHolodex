@@ -2,6 +2,9 @@ package com.pinapelz.datatypes;
 
 /**
  * Comment object
+ *
+ * @author pinapelz
+ * @version $Id: $Id
  */
 public class Comment {
     public String comment_key;
