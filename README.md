@@ -1,5 +1,7 @@
 # JHolodex
 [![build](https://github.com/pinapelz/JHolodex/actions/workflows/maven.yml/badge.svg)](https://github.com/pinapelz/JHolodex/actions/workflows/maven.yml)
+![Maven Central](https://img.shields.io/maven-central/v/com.pinapelz/jholodex)
+
 
 A Java wrapper for the [Holodex API](https://docs.holodex.net/#section/Holodex-API-Documentation).
 
@@ -10,31 +12,24 @@ Please check the [Holodex API](https://holodex.stoplight.io/) for more informati
 [Holodex License](https://docs.holodex.net/#section/LICENSE)
 
 ## Download
-![](https://img.shields.io/github/v/release/pinapelz/JHolodex)
-[![](https://jitpack.io/v/pinapelz/JHolodex.svg)](https://jitpack.io/#pinapelz/JHolodex)
+![Maven Central](https://img.shields.io/maven-central/v/com.pinapelz/jholodex)
+
 ### Maven
 ```xml
 <dependency>
-    <groupId>com.github.pinapelz</groupId>
-    <artifactId>JHolodex</artifactId>
-    <version>VERSION_HERE</version>
+    <groupId>com.pinapelz</groupId>
+    <artifactId>jholodex</artifactId>
+    <version>VERSION</version>
 </dependency>
 ```
 
 ### Gradle
+![Maven Central](https://img.shields.io/maven-central/v/com.pinapelz/jholodex)
 ```java
-allprojects {
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
-}
-
-dependencies {
-        implementation 'com.github.pinapelz:JHolodex:Tag'
-}
+implementation group: 'com.pinapelz', name: 'jholodex', version: '1.4'
 ```
-#### Add [JitPack](https://jitpack.io/) to your list of repositories
+
+Alternatively use Jitpack for pre-releases
 
 
 
