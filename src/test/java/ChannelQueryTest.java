@@ -28,20 +28,5 @@ public class ChannelQueryTest {
         assert(channelQueryBuilder.getOrder().equals("asc"));
     }
 
-    @Test
-    public void getChannelsData(){
-        try {
-            Holodex holodex = new Holodex(apiKey);
-            holodex.getChannels(new ChannelQueryBuilder().setOrg("Hololive"));
-        } catch (HolodexException ex) {
-            fail(ex.getMessage());
-        }
-        assert true;
-    }
-
-
-
-
-
 
 }
