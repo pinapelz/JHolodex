@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pinapelz</groupId>
     <artifactId>jholodex</artifactId>
-    <version>1.41</version>
+    <version>1.42</version>
     <packaging>jar</packaging>
     <name>JHolodex</name>
     <description>A Java wrapper for the Holodex API</description>
@@ -51,7 +51,7 @@
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
-            <version>2.9.0</version>
+            <version>2.11.0</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
@@ -66,12 +66,12 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.10.1</version>
+            <version>2.11.0</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20231013</version>
+            <version>20240303</version>
         </dependency>
     </dependencies>
     <build>
@@ -79,7 +79,7 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.13</version>
+                <version>1.7.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
